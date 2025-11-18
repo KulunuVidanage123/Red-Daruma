@@ -2,6 +2,7 @@ import Slider from './Sections/Slider';
 import AboutUs from './Sections/AboutUs';
 import TopCards from './Sections/TopCards'; 
 import HeroTitle from './Sections/HeroTitle';
+import ImageCards from './Sections/ImageCards';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <AboutUs />
       <TopCards />
       <HeroTitle />
+      <ImageCards />
     </>
   );
 }
