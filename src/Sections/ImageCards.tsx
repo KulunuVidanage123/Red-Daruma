@@ -31,12 +31,21 @@ const ImageCards: React.FC = () => {
   return (
     <section className="w-full h-[650px] [@media(max-width:639px)]:h-[900px] bg-[#FCFAF4] relative">
 
-      {/* DESKTOP/LAPTOP VIEW (900px - 1535px) - Background Image */}
-      <div className="hidden [@media(min-width:900px)]:block [@media(min-width:1536px)]:hidden">
+      {/* EXTRA LARGE SCREEN (1536px and above) */}
+      <div className="hidden 2xl:block">
         <img 
           src={BGImageCard} 
-          alt="Background Image Card" 
-          className="w-full h-full object-cover"
+          alt="Background Image Card XL" 
+          className="w-full h-[1000px] object-cover" 
+        />
+      </div>
+
+      {/* EXTRA LARGE SCREEN (1536px and above) - Increased Height */}
+      <div className="hidden [@media(min-width:1536px)]:block">
+        <img 
+          src={BGImageCard} 
+          alt="Background Image Card XL" 
+          className="w-full h-[600px] object-cover" /* Increased height for XL */
         />
       </div>
 
@@ -80,7 +89,7 @@ const ImageCards: React.FC = () => {
 
       {/* TABLET VIEW (640px–899px) */}
       <div className="[@media(min-width:640px)]:block [@media(min-width:900px)]:hidden hidden">
-        <div className="relative w-full h-[700px]"> {/* Increased height for tablet */}
+        <div className="relative w-full h-[1000px]">
           <button
             className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-3 shadow-md"
             onClick={() => handleSwipe('left')}
@@ -98,7 +107,7 @@ const ImageCards: React.FC = () => {
             <img
               src={swipePages[currentSwipeIndex].topImage}
               alt={swipePages[currentSwipeIndex].topAlt}
-              className="absolute top-[100px] w-full max-w-[75%] h-[550px] object-cover rounded-[20px]" // Adjusted top position
+              className="absolute top-[100px] w-full max-w-[75%] h-[550px] object-cover rounded-[20px]"
             />
             <img
               src={swipePages[currentSwipeIndex].bottomImage}

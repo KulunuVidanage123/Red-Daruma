@@ -1,20 +1,20 @@
 import React from 'react';
 import TopCardsFrame from '@/assets/TopCardsFrame.png';
-import MiddleCard2 from '../assets/MiddleCard2.png';  
+import MiddleCard3 from '../assets/MiddleCard3.png';
 
-const Phase2MiddleCard: React.FC = () => {
+const Phase3MiddleCard: React.FC = () => {
   return (
     <div className="flex justify-center relative">
       {/* Desktop view - 900px and above */}
       <img 
         src={TopCardsFrame} 
-        alt="Phase 2 Middle Card"
+        alt="Phase 3 Middle Card"
         className="w-[1000px] h-[300px] object-cover [@media(max-width:899px)]:hidden block"
       />
       <img
-        src={MiddleCard2}
-        alt="Phase 2 Card"
-        className="w-[500px] h-[300px] object-cover absolute top-[-1px] right-[1px] rounded-tr-[20px] rounded-br-[20px] [@media(max-width:899px)]:hidden block"
+        src={MiddleCard3}
+        alt="Phase 3 Card"
+        className="w-[500px] h-[300px] object-cover absolute top-[0px] left-[500px] rounded-tr-[20px] rounded-br-[20px] [@media(max-width:899px)]:hidden block"
       />
       <h2
         className="absolute top-[-15px] left-[30px] text-[40px] [@media(max-width:899px)]:hidden block"
@@ -24,19 +24,19 @@ const Phase2MiddleCard: React.FC = () => {
           fontWeight: 'bold',
         }}
       >
-        Phase 2
+        Phase 3
       </h2>
       <p
-        className="absolute top-[100px] left-[30px] text-base text-[15px] max-w-[450px] leading-relaxed [@media(max-width:899px)]:hidden block"
+        className="absolute top-[100px] left-[30px] text-base text-[15px] max-w-[460px] leading-relaxed [@media(max-width:899px)]:hidden block"
         style={{
           fontFamily: 'Kalam, cursive',
           color: 'black',
           fontWeight: 'normal',
         }}
       >
-        Your second painted eye, and your wishes too. Hold $D intelligence and luck live in your wallet on-chain. To earn, the twist? This Daruma was created 
-        entirely by artificial intelligence, and the spirit of <span style={{ color: 'red', fontWeight: 'bold' }}>福 (luck)</span>
-        watches over your entire portfolio.
+        Built by machines. Blessed with luck.<br></br> In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, 
+        a Daruma doll has one eye painted when setting a goal, the other when it's achieved. Buying $D is your first painted eye a cosmic
+        wish for health, wealth, and happiness.
       </p>
 
       {/* Mobile and tablet view - below 900px */}
@@ -47,8 +47,8 @@ const Phase2MiddleCard: React.FC = () => {
           className="w-[600px] h-[400px] rotate-[-90deg] [@media(min-width:900px)]:hidden block" 
         />
         <img 
-          src={MiddleCard2} 
-          alt="Mobile Top Cards Image 2" 
+          src={MiddleCard3} 
+          alt="Mobile Top Cards Image 3" 
           className="absolute top-[-80px] left-[295px] transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-tl-[20px] rounded-bl-[20px] rounded-tr-[20px] rounded-br-[20px] [@media(min-width:900px)]:hidden block z-10" 
         />
         <h2
@@ -59,7 +59,7 @@ const Phase2MiddleCard: React.FC = () => {
             fontWeight: 'bold',
           }}
         >
-          Phase 2
+          Phase 3
         </h2>
         <p 
           className="text-center absolute top-[310px] left-1/2 transform -translate-x-1/2 text-black px-4 [@media(min-width:900px)]:hidden block"
@@ -70,13 +70,13 @@ const Phase2MiddleCard: React.FC = () => {
             lineHeight: '1.4'
           }}
         >
-          Your second painted eye, and your wishes too. Hold $D intelligence and luck live in your wallet on-chain. To earn, the twist? This Daruma was created 
-          entirely by artificial intelligence, and the spirit of <span style={{ color: 'red', fontWeight: 'bold' }}>福 (luck)</span>
-          watches over your entire portfolio.
+          Built by machines. Blessed with luck.<br></br> In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, 
+          a Daruma doll has one eye painted when setting a goal, the other when it's achieved. Buying $D is your first painted eye a cosmic
+          wish for health, wealth, and happiness.
         </p>
       </div>
     </div>
   );
 };
 
-export default Phase2MiddleCard;
+export default Phase3MiddleCard;
