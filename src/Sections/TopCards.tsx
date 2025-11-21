@@ -4,7 +4,7 @@ import TopCardsContent2 from '@/components/TopCardsContent2';
 
 const TopCards: React.FC = () => {
   return (
-    <section className="w-full h-[1600px] bg-[#FCFAF4] relative overflow-x-hidden [@media(max-width:899px)]:overflow-x-hidden">
+    <section className="w-full h-[1600px] [@media(max-width:899px)]:h-[1400px] bg-[#FCFAF4] relative overflow-x-hidden [@media(max-width:899px)]:overflow-x-hidden">
         <div className="absolute top-[200px] left-1/2 transform -translate-x-1/2">
             <TopCardsContent />
         </div>

@@ -25,34 +25,39 @@ const MiddleCards: React.FC = () => {
   };
 
   return (
-    <section className="w-full h-[1700px] bg-[#FCFAF4] relative">
+    <section className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
+      
       {/* Desktop view - 900px and above */}
       <div className="[@media(max-width:899px)]:hidden block">
         <MiddleCardsText />
         <div className="absolute top-[300px] left-[15px]">
           <Phase1MiddleCard />
         </div>
-        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[630px] left-[505px]">
+
+        {/*applies only at 1280px+ */}
+        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[630px] [@media(min-width:1280px)]:left-[505px]">
           <Phase2MiddleCard />
         </div>
         <div className="absolute top-[960px] left-[15px]">
           <Phase3MiddleCard />
         </div>
-        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] left-[505px]">
+
+        {/*applies only at 1280px+ */}
+        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] [@media(min-width:1280px)]:left-[505px]">
           <Phase4MiddleCard />
         </div>
       </div>
 
-      {/* Mobile and tablet view - below 900px */}
-      <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[20px]">
+      {/* Mobile & tablet view - below 900px */}
+      <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[50px]">
         <AboutUsText />
-        <div className="relative w-full h-full mt-20">
+        <div className="relative w-full h-full mt-20">      
           <button 
             className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
             onClick={() => handleSwipe('left')}
           >
             ←
-          </button>
+          </button>          
           <button 
             className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
             onClick={() => handleSwipe('right')}

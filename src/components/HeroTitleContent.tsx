@@ -7,10 +7,10 @@ const HeroTitleContent: React.FC = () => {
       <img
         src={HeroTitleImage}
         alt="Hero Title Background"
-        className="absolute top-[170px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[100px] object-cover z-0 [@media(max-width:639px)]:top-[-40px]"
+        className="absolute top-[170px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[100px] object-cover z-0 [@media(max-width:639px)]:top-[40px]"
       />
 
-      <div className="flex flex-col items-center justify-center h-full space-y-2 z-10 [@media(max-width:639px)]:mt-[-110px]">
+      <div className="flex flex-col items-center justify-center h-full space-y-2 z-10 [@media(max-width:639px)]:mt-[-70px]">
         <h1 
           className="
             text-[40px]
