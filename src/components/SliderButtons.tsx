@@ -1,20 +1,37 @@
+// SliderButtons.tsx (updated)
 import React from 'react';
 
-const SliderButtons: React.FC = () => {
+interface SliderButtonsProps {
+  bgColor?: string;
+  textColor?: string;
+}
+
+const SliderButtons: React.FC<SliderButtonsProps> = ({ 
+  bgColor = 'white', 
+  textColor = 'black' 
+}) => {
   return (
     <div className="flex gap-[10px] py-[60px] mobile-button-container">
       {/* Buy now button */}
       <button
-        className="bg-white text-black rounded-[12px] w-[130px] h-[45px] font-inter text-[15px] focus:outline-none border-0
+        className="rounded-[12px] w-[130px] h-[45px] font-inter text-[15px] focus:outline-none border-0
                    transform transition-transform duration-300 hover:scale-105 mobile-button"
+        style={{ 
+          backgroundColor: bgColor,
+          color: textColor 
+        }}
       >
         Buy now
       </button>
 
       {/* Tech stack button */}
       <button
-        className="bg-white text-black rounded-[12px] w-[130px] h-[45px] font-inter text-[15px] focus:outline-none border-0
+        className="rounded-[12px] w-[130px] h-[45px] font-inter text-[15px] focus:outline-none border-0
                    transform transition-transform duration-300 hover:scale-105 mobile-button"
+        style={{ 
+          backgroundColor: bgColor,
+          color: textColor 
+        }}
       >
         Tech stack
       </button>
@@ -24,8 +41,8 @@ const SliderButtons: React.FC = () => {
           .mobile-button-container {
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* ⭐ Center alignment for mobile */
-            width: 400px;
+            justify-content: center;
+            width: 100%;
           }
 
           .mobile-button {

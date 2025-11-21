@@ -5,17 +5,18 @@ import TopCards from './Sections/TopCards';
 import HeroTitle from './Sections/HeroTitle';
 import ImageCards from './Sections/ImageCards';
 import MiddleCards from './Sections/MiddleCards';
+import Homepage from './Sections/Homepage';
 
 function App() {
   return (
     <>
-      {/* <ScreenSizeIndicator /> */}
       <Slider />
       <AboutUs />
       <TopCards />
       <HeroTitle />
       <ImageCards />
       <MiddleCards />
+      <Homepage />
     </>
   );
 }

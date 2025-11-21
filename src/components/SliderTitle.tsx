@@ -1,10 +1,32 @@
 // SliderTitle.tsx
 import React from 'react';
 
-const SliderTitle: React.FC = () => {
+interface SliderTitleProps {
+  color1?: string;
+  color2?: string;
+  highlightFirstWord?: boolean; // New prop for homepage-specific styling
+}
+
+const SliderTitle: React.FC<SliderTitleProps> = ({ 
+  color1 = 'white', 
+  color2 = 'white',
+  highlightFirstWord = false
+}) => {
+  // Helper function to split text with special coloring for first word
+  const renderHighlightedText = (text: string) => {
+    const words = text.split(' ');
+    if (words.length < 2 || !highlightFirstWord) return text;
+    
+    return (
+      <>
+        <span style={{ color: '#cc0000' }}>{words[0]}</span>
+        <span style={{ color: '#000000' }}> {words.slice(1).join(' ')}</span>
+      </>
+    );
+  };
+
   return (
     <div className="text-left max-w-none py-[1px] translate-y-[50px] sm:translate-y-[10px] md:translate-y-[15px] lg:translate-y-[20px]">
-      
       <h1
         className="
           font-bold 
@@ -14,11 +36,11 @@ const SliderTitle: React.FC = () => {
         style={{
           fontFamily: 'Neuton, serif',
           lineHeight: '0.9',
-          color: 'white',
+          color: highlightFirstWord ? 'transparent' : color1, // Transparent when highlighting words
           whiteSpace: 'nowrap',
         }}
       >
-        Forged by machines.
+        {renderHighlightedText("Forged by machines.")}
       </h1>
 
       <h1
@@ -31,13 +53,12 @@ const SliderTitle: React.FC = () => {
         style={{
           fontFamily: 'Neuton, serif',
           lineHeight: '0.9',
-          color: 'white',
+          color: highlightFirstWord ? 'transparent' : color2,
           whiteSpace: 'nowrap',
         }}
       >
-        Favored by fortune.
+        {renderHighlightedText("Favored by fortune.")}
       </h1>
-
     </div>
   );
 };
