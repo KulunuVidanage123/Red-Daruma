@@ -1,19 +1,19 @@
 // BottomCards.tsx
 import React, { useState } from 'react';
 import BottomCardsText from '@/components/BottomCardsText';
-import MiddleCardImage1 from '../assets/MiddleCardImage1.png';
-import MiddleCardImage2 from '../assets/MiddleCardImage2.png';
-import MiddleCardImage3 from '../assets/MiddleCardImage3.png';
-import MiddleCardImage4 from '../assets/MiddleCardImage4.png';
+import BottomCardImage1 from '../assets/BottomCardImage1.png';
+import BottomCardImage2 from '../assets/BottomCardImage2.png';
+import BottomCardImage3 from '../assets/BottomCardImage3.png';
+import BottomCardImage4 from '../assets/BottomCardImage4.png';
 
 const BottomCards: React.FC = () => {
   const [currentSwipeIndex, setCurrentSwipeIndex] = useState(0);
 
   const swipePages = [
-    { image: MiddleCardImage1, alt: "Middle Card 1", rotate: 5 },
-    { image: MiddleCardImage2, alt: "Middle Card 2", rotate: -5 },
-    { image: MiddleCardImage3, alt: "Middle Card 3", rotate: 5 },
-    { image: MiddleCardImage4, alt: "Middle Card 4", rotate: -5 }
+    { image: BottomCardImage1, alt: "Bottom Card 1", rotate: 5 },
+    { image: BottomCardImage2, alt: "Bottom Card 2", rotate: -5 },
+    { image: BottomCardImage3, alt: "Bottom Card 3", rotate: 5 },
+    { image: BottomCardImage4, alt: "Bottom Card 4", rotate: -5 }
   ];
 
   const handleSwipe = (direction: 'left' | 'right') => {
@@ -37,8 +37,8 @@ const BottomCards: React.FC = () => {
         >
           {/* Image 1 */}
           <img 
-            src={MiddleCardImage1} 
-            alt="Middle Card 1" 
+            src={BottomCardImage1} 
+            alt="Bottom Card 1" 
             className="
               absolute top-[300px] h-[600px] w-[500px] object-contain
               left-[300px] [@media(min-width:1600px)]:left-[500px]
@@ -47,8 +47,8 @@ const BottomCards: React.FC = () => {
           />
           {/* Image 2 */}
           <img 
-            src={MiddleCardImage2} 
-            alt="Middle Card 2" 
+            src={BottomCardImage2} 
+            alt="Bottom Card 2" 
             className="
               absolute top-[450px] h-[600px] w-[500px] object-contain
               [@media(min-width:1280px)]:left-[750px] [@media(min-width:1600px)]:left-[950px]
@@ -58,8 +58,8 @@ const BottomCards: React.FC = () => {
           />
           {/* Image 3 */}
           <img 
-            src={MiddleCardImage3} 
-            alt="Middle Card 3" 
+            src={BottomCardImage3} 
+            alt="Bottom Card 3" 
             className="
               absolute top-[850px] h-[600px] w-[500px] object-contain
               left-[290px] [@media(min-width:1600px)]:left-[490px]
@@ -68,8 +68,8 @@ const BottomCards: React.FC = () => {
           />
           {/* Image 4 */}
           <img 
-            src={MiddleCardImage4} 
-            alt="Middle Card 4" 
+            src={BottomCardImage4} 
+            alt="Bottom Card 4" 
             className="
               absolute top-[1000px] h-[600px] w-[500px] object-contain
               [@media(min-width:1280px)]:left-[740px] [@media(min-width:1600px)]:left-[940px]
