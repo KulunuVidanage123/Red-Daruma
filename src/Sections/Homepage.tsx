@@ -7,10 +7,10 @@ import SliderButtons from '@/components/SliderButtons';
 
 const Homepage: React.FC = () => {
   return (
-    <div className="relative w-full h-[670px] [@media(max-width:899px)]:h-[800px]">
+    <div className="relative w-full h-[720px] [@media(max-width:899px)]:h-[800px]">
       {/* Ultra-large screen */}
       <div
-        className="w-full h-[820px] [@media(max-width:1599px)]:hidden bg-cover bg-center absolute inset-0"
+        className="w-full h-[720px] [@media(max-width:1599px)]:hidden bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${HomePageImage})` }}
       />
       
@@ -22,7 +22,7 @@ const Homepage: React.FC = () => {
       
       {/* Mobile & tablet view */}
       <div
-        className="w-full h-[720px] [@media(min-width:900px)]:hidden bg-cover bg-center absolute inset-0"
+        className="w-full h-[850px] [@media(min-width:900px)]:hidden [@media(max-width:767px)]:h-[820px] bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${HomePageMobileImage})` }}
       />
       
@@ -34,7 +34,7 @@ const Homepage: React.FC = () => {
         </div>
       </div>
       
-      {/* Laptop view content - 1281px to 1536px */}
+      {/* Laptop view content */}
       <div className="[@media(max-width:1280px)]:hidden [@media(min-width:1537px)]:hidden absolute bottom-[100px] left-[1000px] z-10">
         <div className="flex flex-col gap-[20px]">
           <SliderTitle highlightFirstWord={true} />
@@ -50,7 +50,7 @@ const Homepage: React.FC = () => {
         </div>
       </div>
       
-      {/* Hidden section for 900px to 1280px */}
+      {/* Hidden section */}
       <div className="[@media(min-width:900px)]:block [@media(min-width:1281px)]:hidden [@media(max-width:1280px)]:block hidden">
       </div>
     </div>

@@ -27,7 +27,7 @@ const MiddleCards: React.FC = () => {
   return (
     <section className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
       
-      {/* Desktop view - 900px and above */}
+      {/* Desktop view */}
       <div className="[@media(max-width:899px)]:hidden block">
         <MiddleCardsText />
         <div className="absolute top-[300px] left-[15px]">
@@ -41,14 +41,13 @@ const MiddleCards: React.FC = () => {
         <div className="absolute top-[960px] left-[15px]">
           <Phase3MiddleCard />
         </div>
-
         {/*applies only at 1280px+ */}
         <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] [@media(min-width:1280px)]:left-[505px]">
           <Phase4MiddleCard />
         </div>
       </div>
 
-      {/* Mobile & tablet view - below 900px */}
+      {/* Mobile & tablet view */}
       <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[50px]">
         <AboutUsText />
         <div className="relative w-full h-full mt-20">      

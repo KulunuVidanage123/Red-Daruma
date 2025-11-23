@@ -6,6 +6,7 @@ import HeroTitle from './Sections/HeroTitle';
 import ImageCards from './Sections/ImageCards';
 import MiddleCards from './Sections/MiddleCards';
 import Homepage from './Sections/Homepage';
+import BottomCards from './Sections/BottomCards';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <ImageCards />
       <MiddleCards />
       <Homepage />
+      <BottomCards />
     </>
   );
 }

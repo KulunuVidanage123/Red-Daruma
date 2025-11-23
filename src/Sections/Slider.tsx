@@ -10,25 +10,23 @@ import SliderButtons from '../components/SliderButtons';
 const Slider: React.FC = () => {
   return (
     <div className="relative w-screen h-[720px] [@media(max-width:899px)]:h-[800px]">
-      {/* Extra large screen view - 1600px and above */}
+      
+      {/* Extra large screen */}
       <div
         className="w-full h-[750px] [@media(max-width:1599px)]:hidden bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${BGImage1})` }}
-      />
-      
-      {/* Desktop view - 900px to 1599px */}
+      />      
+      {/* Desktop view */}
       <div
         className="w-full h-[720px] [@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${BGImage1})` }}
-      />
-      
-      {/* Mobile & tablet view - below 900px */}
+      />      
+      {/* Mobile & tablet view */}
       <div
         className="w-full h-[720px] [@media(min-width:900px)]:hidden bg-cover bg-center absolute inset-0"
         style={{ backgroundImage: `url(${BGImage1})` }}
       />
-
-      {/* RedDaruma - visible on all screens with responsive positioning */}
+      {/* RedDaruma */}
       <img
         src={RedDaruma}
         alt="Red Daruma"
@@ -37,8 +35,7 @@ const Slider: React.FC = () => {
                    [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px]
                    [@media(min-width:1600px)]:left-[80px]"
       />
-
-      {/* NavIcon - visible on all screens with responsive positioning */}
+      {/* NavIcon */}
       <img
         src={NavIcon}
         alt="Navigation Icon"
@@ -46,22 +43,21 @@ const Slider: React.FC = () => {
                    [@media(max-width:899px)]:top-[30px] [@media(max-width:899px)]:right-[20px]
                    [@media(min-width:1600px)]:right-[80px]"
       />
-
-      {/* Extra large screen content - 1600px and above */}
+      {/* Extra large screen content */}
       <div className="[@media(max-width:1599px)]:hidden absolute bottom-[50px] left-[50px] z-10">
         <div className="flex flex-col gap-[20px]">
           <SliderTitle />
           <SliderButtons />
         </div>
-      </div>
-      
-      {/* Desktop view content - 900px to 1599px */}
+      </div>      
+
+      {/* Desktop view content */}
       <div className="[@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden absolute bottom-[15px] left-[20px] flex flex-col items-start gap-[8px] z-10">
         <SliderTitle />
         <SliderButtons />
       </div>
 
-      {/* Mobile & tablet view - below 900px */}
+      {/* Mobile & tablet view */}
       <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[1px] z-10">
         <div className="relative w-full h-full flex flex-col items-center justify-center gap-[30px] top-[250px]">
           <SliderTitle />
@@ -69,7 +65,7 @@ const Slider: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom logos - visible on all screens with responsive positioning */}
+      {/* Bottom logos */}
       <img
         src={BottomLogos}
         alt="Bottom Logos"

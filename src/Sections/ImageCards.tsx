@@ -31,21 +31,12 @@ const ImageCards: React.FC = () => {
   return (
     <section className="w-full h-[650px] [@media(max-width:639px)]:h-[900px] bg-[#FCFAF4] relative">
 
-      {/* EXTRA LARGE SCREEN (1536px and above) */}
-      <div className="hidden 2xl:block">
-        <img 
-          src={BGImageCard} 
-          alt="Background Image Card XL" 
-          className="w-full h-[1000px] object-cover" 
-        />
-      </div>
-
-      {/* EXTRA LARGE SCREEN (1536px and above) - Increased Height */}
+      {/* EXTRA LARGE SCREEN */}
       <div className="hidden [@media(min-width:1536px)]:block">
         <img 
           src={BGImageCard} 
           alt="Background Image Card XL" 
-          className="w-full h-[600px] object-cover" /* Increased height for XL */
+          className="w-full h-[600px] object-cover" 
         />
       </div>
 
@@ -87,7 +78,7 @@ const ImageCards: React.FC = () => {
         </div>
       </div>
 
-      {/* TABLET VIEW (640px–899px) */}
+      {/* TABLET VIEW */}
       <div className="[@media(min-width:640px)]:block [@media(min-width:900px)]:hidden hidden">
         <div className="relative w-full h-[1000px]">
           <button
