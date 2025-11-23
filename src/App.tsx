@@ -8,6 +8,7 @@ import MiddleCards from './Sections/MiddleCards';
 import Homepage from './Sections/Homepage';
 import BottomCards from './Sections/BottomCards';
 import ContactUs from './Sections/ContactUs';
+import Footer from './Sections/Footer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Homepage />
       <BottomCards />
       <ContactUs />
+      <Footer />
     </>
   );
 }

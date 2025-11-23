@@ -5,21 +5,21 @@ import ContactUsButtons from '@/components/ContactUsButtons';
 import ContactUsImage from '../assets/ContactUsImage.png';
 import ContactUsImage2 from '../assets/ContactUsImage2.png'; 
 import ContactUsImage3 from '../assets/ContactUsImage3.png';
-import ContactUsLogoMobile from '../assets/ContactUsLogoMobile.png'; // New import
+import ContactUsLogoMobile from '../assets/ContactUsLogoMobile.png'; 
 
 const ContactUs: React.FC = () => {
   return (
     <div 
       className="w-full relative" 
       style={{ 
-        height: '400px' 
+        height: '400px [@media(max-width:899px)]:h-[800px]', 
       }}
     >
       <div className="flex flex-col items-center h-full">
         <ContactUsText />
         
         {/* Desktop */}
-        <div className="[@media(max-width:899px)]:hidden mt-[20px] flex flex-col items-center">
+        <div className="[@media(max-width:899px)]:hidden h-[220px] mt-[20px] flex flex-col items-center">
           <div className="relative">
             {/* Bottom image */}
             <img 
