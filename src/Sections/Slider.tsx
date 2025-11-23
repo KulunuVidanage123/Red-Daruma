@@ -52,7 +52,7 @@ const Slider: React.FC = () => {
       </div>      
 
       {/* Desktop view content */}
-      <div className="[@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden absolute bottom-[15px] left-[20px] flex flex-col items-start gap-[8px] z-10">
+      <div className="[@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden absolute bottom-[15px] left-[40px] flex flex-col items-start gap-[8px] z-10">
         <SliderTitle />
         <SliderButtons />
       </div>

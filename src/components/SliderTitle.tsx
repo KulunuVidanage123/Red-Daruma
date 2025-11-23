@@ -4,7 +4,7 @@ import React from 'react';
 interface SliderTitleProps {
   color1?: string;
   color2?: string;
-  highlightFirstWord?: boolean; // New prop for homepage-specific styling
+  highlightFirstWord?: boolean; 
 }
 
 const SliderTitle: React.FC<SliderTitleProps> = ({ 
@@ -12,7 +12,6 @@ const SliderTitle: React.FC<SliderTitleProps> = ({
   color2 = 'white',
   highlightFirstWord = false
 }) => {
-  // Helper function to split text with special coloring for first word
   const renderHighlightedText = (text: string) => {
     const words = text.split(' ');
     if (words.length < 2 || !highlightFirstWord) return text;
@@ -36,7 +35,7 @@ const SliderTitle: React.FC<SliderTitleProps> = ({
         style={{
           fontFamily: 'Neuton, serif',
           lineHeight: '0.9',
-          color: highlightFirstWord ? 'transparent' : color1, // Transparent when highlighting words
+          color: highlightFirstWord ? 'transparent' : color1, 
           whiteSpace: 'nowrap',
         }}
       >

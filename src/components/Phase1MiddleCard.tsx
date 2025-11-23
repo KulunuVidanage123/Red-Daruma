@@ -1,6 +1,7 @@
 import React from 'react';
 import TopCardsFrame from '@/assets/TopCardsFrame.png';
 import MiddleCard1 from '../assets/MiddleCard1.png';
+import MiddleCard1Mobile from '../assets/MiddleCard1Mobile.png';
 
 const Phase1MiddleCard: React.FC = () => {
   return (
@@ -47,7 +48,7 @@ const Phase1MiddleCard: React.FC = () => {
           className="w-[600px] h-[400px] rotate-[-90deg] [@media(min-width:900px)]:hidden block" 
         />
         <img 
-          src={MiddleCard1} 
+          src={MiddleCard1Mobile} 
           alt="Mobile Top Cards Image 1" 
           className="absolute top-[-80px] left-[295px] transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-tl-[20px] rounded-bl-[20px] rounded-tr-[20px] rounded-br-[20px] [@media(min-width:900px)]:hidden block z-10" 
         />

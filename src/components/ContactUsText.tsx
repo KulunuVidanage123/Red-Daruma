@@ -1,12 +1,12 @@
-// MiddleCardsText.tsx
+// ContactUsText.tsx
 import React from 'react';
 
-const BottomCardsText: React.FC = () => {
+const ContactUsText: React.FC = () => {
   return (
-    <div className="w-full pt-[80px]">
+    <div className="w-full pt-[30px]">
       <h1 
         className="
-          text-center text-[40px] mb-12
+          text-center text-[40px] mb-4
           [@media(max-width:899px)]:text-[28px]
         "
         style={{ 
@@ -16,22 +16,23 @@ const BottomCardsText: React.FC = () => {
           lineHeight: '0.9',
         }}
       >
-        How to Buy
+        Contract Address
       </h1>
       <p
         className="
           text-center text-base text-[14px] mx-auto max-w-2xl
-          [@media(max-width:899px)]:text-[12px]
+          [@media(max-width:899px)]:text-[12px] px-[20px] py-[20px]
         "
         style={{ 
           fontFamily: 'Inter, sans-serif',
           color: 'black',
         }}
       >
-        Getting $D is simple. Follow these four easy steps to join our community
+        The contract address is the unique identifier for the Red Daruma token on the blockchain. Use this address to send or receive<br></br>
+        $D securely. Always ensure you’re using the correct contract address to avoid any risks
       </p>
     </div>
   );
 };
 
-export default BottomCardsText;
+export default ContactUsText;

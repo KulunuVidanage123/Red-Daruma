@@ -7,6 +7,7 @@ import ImageCards from './Sections/ImageCards';
 import MiddleCards from './Sections/MiddleCards';
 import Homepage from './Sections/Homepage';
 import BottomCards from './Sections/BottomCards';
+import ContactUs from './Sections/ContactUs';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <MiddleCards />
       <Homepage />
       <BottomCards />
+      <ContactUs />
     </>
   );
 }
