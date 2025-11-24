@@ -25,8 +25,10 @@ const MiddleCards: React.FC = () => {
   };
 
   return (
-    <section className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
-      
+    <section 
+      id="description" // ← Critical for scroll navigation
+      className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
+
       {/* Desktop view */}
       <div className="[@media(max-width:899px)]:hidden block">
         <MiddleCardsText />

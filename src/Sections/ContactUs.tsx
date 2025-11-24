@@ -10,6 +10,7 @@ import ContactUsLogoMobile from '../assets/ContactUsLogoMobile.png';
 const ContactUs: React.FC = () => {
   return (
     <div 
+      id="contact-us"
       className="w-full relative" 
       style={{ 
         height: '400px [@media(max-width:899px)]:h-[800px]', 

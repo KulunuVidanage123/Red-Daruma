@@ -4,12 +4,13 @@ import FooterImage from '../assets/FooterImage.png';
 import FooterMobileImage from '../assets/FooterMobileImage.png';
 import FooterGradient from '../assets/FooterGradient.png';
 import FooterContent from '@/components/FooterContent';
-import FooterButtons from '@/components/FooterButtons'; // Added import
+import FooterButtons from '@/components/FooterButtons'; 
 
 const Footer: React.FC = () => {
   return (
-    <div className="relative w-full h-[800px] [@media(max-width:899px)]:h-[1000px]">
-      {/* FooterContent and FooterButtons container - centered */}
+    <div 
+     id="community"
+     className="relative w-full h-[800px] [@media(max-width:899px)]:h-[1000px]">
       <div className="absolute top-[120px] left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center">
         <FooterContent />
         <div className="mt-6">
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       
-      {/* Gradient overlay - white gradient from top */}
+      {/* Gradient overlay */}
       <div 
         className="absolute inset-[0px] z-0"
         style={{
@@ -36,10 +37,16 @@ const Footer: React.FC = () => {
         className="w-full h-[800px] [@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden bg-cover bg-center absolute inset-0 z-[-1]"
         style={{ backgroundImage: `url(${FooterImage})` }}
       />
+
+      {/* Tablet: 640px – 899px */}
+      <div
+        className="w-full h-[1000px] [@media(max-width:640px)]:hidden [@media(min-width:900px)]:hidden bg-cover bg-center absolute inset-0 z-[-1]"
+        style={{ backgroundImage: `url(${FooterImage})` }}
+      />
       
       {/* Mobile & tablet view */}
       <div
-        className="w-full h-[1600px] [@media(min-width:900px)]:hidden bg-cover bg-center absolute inset-0 z-[-1]"
+        className="w-full h-[1600px] [@media(min-width:640px)]:hidden bg-cover bg-center absolute inset-0 z-[-1]"
         style={{ backgroundImage: `url(${FooterMobileImage})` }}
       />
       

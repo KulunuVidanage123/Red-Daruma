@@ -25,7 +25,9 @@ const BottomCards: React.FC = () => {
   };
 
   return (
-    <div className="w-full relative">
+    <div 
+    id="how-to-buy"
+    className="w-full relative">
       {/* Desktop & Extra Large Screens */}
       <div className="hidden [@media(min-width:900px)]:block">
         <div 

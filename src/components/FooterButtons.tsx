@@ -13,15 +13,20 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
   textColor = 'black' 
 }) => {
   return (
-    <div className="flex gap-[20px] py-[20px] mobile-button-container">
+    <div className="flex gap-[15px] py-[20px] mobile-button-container">
       {/* Twitter button with logo */}
-      <button
+      <a
+        href="https://x.com"
+        target="_blank"
+        rel="noopener noreferrer"
         className="rounded-[20px] w-[120px] h-[35px] font-inter text-[12px] focus:outline-none border-0
                    transform transition-transform duration-300 hover:scale-105 mobile-button
-                   shadow-[0_4px_8px_rgba(0,0,0,0.25)] relative flex items-center justify-center"
+                   shadow-[0_4px_8px_rgba(0,0,0,0.25)] flex items-center justify-center no-underline"
         style={{ 
           backgroundColor: bgColor,
           color: textColor,
+          textDecoration: 'none',
+          display: 'flex'
         }}
       >
         <div className="flex items-center">
@@ -36,16 +41,21 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
           />
           Twitter
         </div>
-      </button>
+      </a>
 
       {/* Telegram button with logo */}
-      <button
+      <a
+        href="https://telegram.org/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="rounded-[20px] w-[120px] h-[35px] font-inter text-[12px] focus:outline-none border-0
                    transform transition-transform duration-300 hover:scale-105 mobile-button
-                   shadow-[0_4px_8px_rgba(0,0,0,0.25)] relative flex items-center justify-center"
+                   shadow-[0_4px_8px_rgba(0,0,0,0.25)] flex items-center justify-center no-underline"
         style={{ 
           backgroundColor: bgColor,
-          color: textColor 
+          color: textColor,
+          textDecoration: 'none',
+          display: 'flex'
         }}
       >
         <div className="flex items-center">
@@ -60,7 +70,7 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
           />
           Telegram
         </div>
-      </button>
+      </a>
 
       <style>{`
         @media (max-width: 639px) {
@@ -68,7 +78,7 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 300px;
           }
 
           .mobile-button {
@@ -88,6 +98,9 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({
               width: calc(100% - 20px) !important;
             }
           }
+        }
+        .no-underline {
+          text-decoration: none;
         }
       `}</style>
     </div>

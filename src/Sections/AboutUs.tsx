@@ -4,7 +4,9 @@ import AboutUsText from '../components/AboutUsText';
 
 const AboutUs: React.FC = () => {
   return (
-    <section className="w-full h-[500px] bg-white relative">
+    <section
+      id="about-us"
+      className="w-full h-[500px] bg-white relative">
       <img
         src={AboutUsDoll}
         alt="About Us Doll"
