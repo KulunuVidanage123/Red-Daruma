@@ -5,6 +5,7 @@ import NavIcon from '../assets/NavIcon.png';
 import BottomLogos from '../assets/BottomLogos.png';
 import SliderTitle from '../components/SliderTitle';
 import SliderButtons from '../components/SliderButtons';
+import { XCircle } from "lucide-react";
 
 const Slider: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -91,25 +92,41 @@ const Slider: React.FC = () => {
       {menuOpen && (
         <div
           ref={sidebarRef}
-          className="fixed top-0 right-[1px] h-[450px] w-[210px] bg-[#D6ECFF] shadow-xl z-50 border-l border-[#b7d7f5] 
-                    transition-transform duration-300 ease-out"
-          style={{ transform: menuOpen ? 'translateX(0)' : 'translateX(100%)' }}
-        >
+          className="fixed top-0 right-[1px] h-[450px] w-[210px] shadow-xl z-50
+                    rounded-l-[20px]  overflow-hidden 
+                    transition-transform duration-300 ease-out
+                    [@media(max-width:899px)]:w-screen
+                    [@media(max-width:899px)]:rounded-none
+                    [@media(max-width:899px)]:h-[350px]" 
+          style={{
+            transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
+            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
+            backdropFilter: 'blur(0px)', 
+            WebkitBackdropFilter: 'blur(4px)', 
+          }}
+      >
+
           {/* Close Button */}
           <button
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
-            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-700 hover:text-black focus:outline-none"
+            className="absolute top-[20px] right-[25px] p-1 
+                      bg-transparent border-0 flex items-center justify-center 
+                      text-gray-700 hover:text-red-600 transition-all duration-200"
           >
-            <span className="text-3xl font-bold">×</span>
+            <XCircle className="w-8 h-8" />
           </button>
 
           {/* Menu Items */}
-          <ul className="flex flex-col mt-[60px] list-none space-y-[50px] px-[50px]">
+          <ul
+            className="flex flex-col mt-[60px] list-none space-y-[40px] px-[50px]
+                      [@media(max-width:899px)]:items-center [@media(max-width:899px)]:px-0"
+          >
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="py-6 text-[20px] font-bold font-Neuton text-black hover:bg-[#c5e5ff] hover:text-red-600 cursor-pointer transition-colors duration-200"
+                className="py-6 text-[20px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200"
+                style={{ fontFamily: "'Kalam', cursive" }}
                 onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
