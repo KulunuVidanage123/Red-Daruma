@@ -41,3 +41,58 @@ html, body {
   animation: slide-in-right 0.3s ease-out forwards;
 }
 
+
+@keyframes oscillateTilt {
+  0% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-oscillate-tilt {
+  animation: oscillateTilt 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+
+/* Phase 1 & 3: move right, but stay on screen */
+@keyframes shuttleRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(32vw); 
+  }
+}
+
+/* Phase 2 & 4: move left, but stay on screen */
+@keyframes shuttleLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-32vw); 
+  }
+}
+
+.animate-shuttle-right {
+  animation: shuttleRight 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-shuttle-left {
+  animation: shuttleLeft 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shuttle-right,
+  .animate-shuttle-left {
+    animation: none;
+  }
+}

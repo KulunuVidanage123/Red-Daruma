@@ -27,27 +27,42 @@ const MiddleCards: React.FC = () => {
   return (
     <section 
       id="description" 
-      className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
-
-      {/* Desktop view */}
+      className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden"
+    >
+      {/* Desktop view — with animation */}
       <div className="[@media(max-width:899px)]:hidden block">
         <MiddleCardsText />
+        
+        {/* Phase 1: left → right */}
         <div className="absolute top-[300px] left-[15px]">
-          <Phase1MiddleCard />
+          <div className="animate-shuttle-right">
+            <Phase1MiddleCard />
+          </div>
         </div>
 
+        {/* Phase 2: right → left */}
         <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[630px] [@media(min-width:1280px)]:left-[505px]">
-          <Phase2MiddleCard />
+          <div className="animate-shuttle-left">
+            <Phase2MiddleCard />
+          </div>
         </div>
+
+        {/* Phase 3: left → right */}
         <div className="absolute top-[960px] left-[15px]">
-          <Phase3MiddleCard />
+          <div className="animate-shuttle-right">
+            <Phase3MiddleCard />
+          </div>
         </div>
+
+        {/* Phase 4: right → left */}
         <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] [@media(min-width:1280px)]:left-[505px]">
-          <Phase4MiddleCard />
+          <div className="animate-shuttle-left">
+            <Phase4MiddleCard />
+          </div>
         </div>
       </div>
 
-      {/* Mobile & tablet view */}
+      {/* Mobile & tablet view — NO animation */}
       <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[50px]">
         <AboutUsText />
         <div className="relative w-full h-full mt-20">      

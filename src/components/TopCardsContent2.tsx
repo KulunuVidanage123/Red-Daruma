@@ -6,36 +6,40 @@ import MobileTopCardsImage2 from '../assets/MobileTopCardsImage2.png';
 const TopCardsContent2: React.FC = () => {
   return (
     <div className="relative">
-      {/* Desktop view - original layout */}
-      <img 
-        src={TopCardsFrame} 
-        alt="Top Cards Frame" 
-        className="rotate-[5deg] w-[1200px] h-[600px] xl:w-[1000px] xl:h-[500px] lg:w-[800px] lg:h-[400px] hidden [@media(min-width:900px)]:block" 
-      />
-      <img 
-        src={TopCardsImage2} 
-        alt="Top Cards Image 2" 
-        className="absolute top-[5px] left-[575px] lg:left-[475px] rotate-[-0deg] w-[640px] h-[620px] rounded-tr-[24px] rounded-br-[24px] hidden [@media(min-width:900px)]:block" 
-      />
-      <p 
-        className="absolute top-[200px] left-[60px] lg:left-[40px] rotate-[5deg] text-black hidden [@media(min-width:900px)]:block"
-        style={{ 
-          fontFamily: 'Kalam, cursive',
-          fontSize: '16px',
-          maxWidth: '500px',
-          lineHeight: '1.5'
-        }}
-      >
-        Your second painted eye, and your wishes too. Hold $D intelligence and luck live in your wallet on-chain. 
-        To earn, the twist? This Daruma was created entirely by artificial intelligence, 
-        and the spirit of <span style={{ color: 'red', fontFamily: 'Kalam, cursive' }}>福 (luck)</span> watches over your entire portfolio.
-      </p>
+      {/* Desktop view - wrapped in a single rotating container */}
+      <div className="hidden [@media(min-width:900px)]:block absolute left-[10px] top-[-300px] transform -translate-x-1/2 -translate-y-1/2">
+        <div className="relative animate-oscillate-tilt">
+          <img 
+            src={TopCardsFrame} 
+            alt="Top Cards Frame" 
+            className="w-[1200px] h-[600px] xl:w-[1000px] xl:h-[500px] lg:w-[800px] lg:h-[400px]"
+          />
+          <img 
+            src={TopCardsImage2} 
+            alt="Top Cards Image 2" 
+            className="rotate-[-5deg] absolute top-[-20px] left-[575px] lg:left-[475px] w-[640px] h-[620px] rounded-tr-[24px] rounded-br-[24px]"
+          />
+          <p 
+            className="absolute top-[220px] left-[60px] lg:left-[40px] text-black"
+            style={{ 
+              fontFamily: 'Kalam, cursive',
+              fontSize: '16px',
+              maxWidth: '500px',
+              lineHeight: '1.5'
+            }}
+          >
+            Your second painted eye, and your wishes too. Hold $D intelligence and luck live in your wallet on-chain. 
+            To earn, the twist? This Daruma was created entirely by artificial intelligence, 
+            and the spirit of <span style={{ color: 'red', fontFamily: 'Kalam, cursive' }}>福 (luck)</span> watches over your entire portfolio.
+          </p>
+        </div>
+      </div>
 
-      {/* Mobile and tablet view - below 900px */}
+      {/* Mobile and tablet view - unchanged */}
       <img 
         src={TopCardsFrame} 
         alt="Top Cards Frame" 
-        className="w-[600px] h-[400px] rotate-[-90deg] top-[-00px] [@media(max-width:899px)]:block hidden" 
+        className="w-[600px] h-[400px] rotate-[-90deg] [@media(max-width:899px)]:block hidden" 
       />
       <img 
         src={MobileTopCardsImage2} 
@@ -57,7 +61,6 @@ const TopCardsContent2: React.FC = () => {
       </p>
     </div>    
   );
-  
 };
 
 export default TopCardsContent2;

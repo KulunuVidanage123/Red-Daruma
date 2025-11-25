@@ -6,41 +6,43 @@ import MobileTopCardsImage1 from '../assets/MobileTopCardsImage1.png';
 const TopCardsContent: React.FC = () => {
   return (
     <div className="relative">
-      {/* Desktop view - original layout */}
-      <img 
-        src={TopCardsFrame} 
-        alt="Top Cards Frame" 
-        className="rotate-[-5deg] w-[1200px] h-[600px] hidden [@media(min-width:900px)]:block" 
-      />
-      <img 
-        src={TopCardsImage1} 
-        alt="Top Cards Image 1" 
-        className="absolute bottom-[30px] left-[575px] rotate-[-0deg] w-[640px] h-[620px] rounded-tr-[24px] rounded-br-[24px] hidden [@media(min-width:900px)]:block" 
-      />
+      {/* Desktop view - wrapped in a single rotating container */}
+      <div className="hidden [@media(min-width:900px)]:block absolute left-[10px] top-[300px] transform -translate-x-1/2 -translate-y-1/2">
+        <div className="relative animate-oscillate-tilt">
+          <img 
+            src={TopCardsFrame} 
+            alt="Top Cards Frame" 
+            className="w-[1200px] h-[600px]"
+          />
+          <img 
+            src={TopCardsImage1} 
+            alt="Top Cards Image 1" 
+            className="rotate-[5deg] absolute bottom-[4px] left-[575px] w-[640px] h-[620px] rounded-tr-[24px] rounded-br-[24px]"
+          />
+          <p 
+            className="absolute top-[220px] left-[60px] text-black"
+            style={{ 
+              fontFamily: 'Kalam, cursive',
+              fontSize: '16px',
+              maxWidth: '500px',
+              lineHeight: '1.5'
+            }}
+          >
+            Built by machines. Blessed with luck.
+            <br />
+            In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, a Daruma doll has 
+            one eye painted when setting a goal, the other when it's achieved. Buying $D is your first
+            painted eye a cosmic wish for health, wealth, and happiness.
+          </p>
+        </div>
+      </div>
 
-      <p 
-        className="absolute top-[250px] left-[60px] rotate-[-5deg] text-black hidden [@media(min-width:900px)]:block"
-        style={{ 
-          fontFamily: 'Kalam, cursive',
-          fontSize: '16px',
-          maxWidth: '500px',
-          lineHeight: '1.5'
-        }}
-      >
-        Built by machines. Blessed with luck.
-        <br />
-        In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, a Daruma doll has 
-        one eye painted when setting a goal, the other when it's achieved. Buying $D is your first
-        painted eye a cosmic wish for health, wealth, and happiness.
-      </p>
-
-
-      {/* Mobile and tablet view - below 900px */}
+      {/* Mobile and tablet view - unchanged */}
       <img 
         src={TopCardsFrame} 
         alt="Top Cards Frame" 
         className="w-[600px] h-[400px] rotate-[-90deg] [@media(max-width:899px)]:block hidden" 
-        />
+      />
       <img 
         src={MobileTopCardsImage1} 
         alt="Mobile Top Cards Image 1" 
@@ -63,7 +65,6 @@ const TopCardsContent: React.FC = () => {
       </p>
     </div>    
   );
-
 };
 
 export default TopCardsContent;
