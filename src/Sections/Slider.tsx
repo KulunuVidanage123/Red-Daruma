@@ -102,7 +102,7 @@ const Slider: React.FC = () => {
             height: '80px',
           }}
         >
-          <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px]">
+          <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px] [@media(min-width:1600px)]:pr-[200px] [@media(min-width:1600px)]:gap-[180px]">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -120,13 +120,12 @@ const Slider: React.FC = () => {
       {/* MOBILE MENU */}
       {menuOpen && !isDesktop && (
         <div
-          ref={mobileRef}
-          className="fixed top-0 right-0 h-[350px] w-screen shadow-xl z-50 rounded-none overflow-hidden transition-transform duration-300 ease-out"
+          className="fixed top-0 left-0 w-full z-50"
           style={{
-            transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
-            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
+            background: '#B5C7EB', 
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+            height: '80px',
           }}
         >
           <button

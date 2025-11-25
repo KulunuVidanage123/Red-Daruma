@@ -11,7 +11,7 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({
   textColor = 'black' 
 }) => {
   return (
-    <div className="flex gap-[10px] py-[60px] mobile-button-container">
+    <div className="flex gap-[20px] py-[60px] mobile-button-container">
       {/* Buy now button */}
       <button
         className="rounded-[12px] w-[130px] h-[45px] font-inter text-[15px] focus:outline-none border-0
