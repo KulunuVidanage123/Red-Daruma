@@ -106,7 +106,7 @@ const Slider: React.FC = () => {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="text-[24px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 px-4 py-2 rounded"
+                className="text-[24px] font-bold text-black hover:text-red-600 cursor-pointer transition-all duration-200 transform hover:scale-105"
                 style={{ fontFamily: "'Kalam', cursive" }}
                 onClick={() => handleNavClick(item.id)}
               >
