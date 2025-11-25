@@ -71,7 +71,7 @@ const Slider: React.FC = () => {
       <img
         src={RedDaruma}
         alt="Red Daruma"
-        className="absolute top-[120px] left-[40px] w-[250px] h-[40px] [@media(max-width:899px)]:top-[45px] [@media(max-width:899px)]:left-[40px] [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px] [@media(min-width:1600px)]:left-[80px]"
+        className="absolute top-[20px] left-[50px] w-[250px] h-[40px] [@media(max-width:899px)]:top-[45px] [@media(max-width:899px)]:left-[40px] [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px] [@media(min-width:900px)]:fixed [@media(min-width:900px)]:z-60 [@media(min-width:1600px)]:left-[80px]"
       />
 
       {/* Nav Icon mobile */}
@@ -96,13 +96,13 @@ const Slider: React.FC = () => {
         <div
           className="fixed top-0 left-0 w-full z-50"
           style={{
-            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
-            height: '80px', 
+            background: 'linear-gradient(to bottom, rgba(210, 234, 255, 0.51), rgba(149, 200, 244, 0.5))',
+            backdropFilter: 'blur(0px)',
+            WebkitBackdropFilter: 'blur(0px)',
+            height: '80px',
           }}
         >
-          <ul className="flex flex-row justify-center items-start h-full list-none gap-[180px] pt-[8px]">
+          <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px]">
             {navItems.map((item, index) => (
               <li
                 key={index}

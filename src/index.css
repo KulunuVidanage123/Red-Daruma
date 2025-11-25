@@ -96,3 +96,28 @@ html, body {
     animation: none;
   }
 }
+
+.animate-eye-blink {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 40%,
+    black 48%,
+    black 52%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 100% 300%;
+  background-position: center top;
+  animation: blinkEye 6s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes blinkEye {
+  0%, 45%, 55%, 100% {
+    background-position: center top; /* Open: black band above view */
+  }
+  48%, 52% {
+    background-position: center center; /* Closed: black band covers center */
+  }
+}
