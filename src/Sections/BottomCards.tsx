@@ -29,6 +29,17 @@ const BottomCards: React.FC = () => {
     id="how-to-buy"
     className="w-full relative">
       {/* Desktop & Extra Large Screens */}
+      <style>{`
+        @keyframes slowTilt {
+          0% { transform: rotate(0deg); }
+          50% { transform: rotate(5deg); }
+          100% { transform: rotate(0deg); }
+        }
+        .tilt-animation {
+          animation: slowTilt 6s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="hidden [@media(min-width:900px)]:block">
         <div 
           style={{ 
@@ -41,9 +52,7 @@ const BottomCards: React.FC = () => {
           <img 
             src={BottomCardImage1} 
             alt="Bottom Card 1" 
-            className="
-              absolute top-[300px] h-[600px] w-[500px] object-contain
-              left-[300px] [@media(min-width:1600px)]:left-[500px]
+            className="tilt-animation absolute top-[300px] h-[600px] w-[500px] object-contain left-[300px] [@media(min-width:1600px)]:left-[500px]
             "
             style={{ maxHeight: '100%' }}
           />
@@ -51,10 +60,8 @@ const BottomCards: React.FC = () => {
           <img 
             src={BottomCardImage2} 
             alt="Bottom Card 2" 
-            className="
-              absolute top-[450px] h-[600px] w-[500px] object-contain
-              [@media(min-width:1280px)]:left-[750px] [@media(min-width:1600px)]:left-[950px]
-              [@media(max-width:1279px)]:right-[15px] [@media(max-width:1279px)]:left-auto
+            className="tilt-animation
+              absolute top-[450px] h-[600px] w-[500px] object-contain [@media(min-width:1280px)]:left-[750px] [@media(min-width:1600px)]:left-[950px] [@media(max-width:1279px)]:right-[15px] [@media(max-width:1279px)]:left-auto
             "
             style={{ maxHeight: '100%' }}
           />
@@ -62,9 +69,8 @@ const BottomCards: React.FC = () => {
           <img 
             src={BottomCardImage3} 
             alt="Bottom Card 3" 
-            className="
-              absolute top-[850px] h-[600px] w-[500px] object-contain
-              left-[290px] [@media(min-width:1600px)]:left-[490px]
+            className="tilt-animation
+              absolute top-[850px] h-[600px] w-[500px] object-contain left-[290px] [@media(min-width:1600px)]:left-[490px]
             "
             style={{ maxHeight: '100%' }}
           />
@@ -72,10 +78,8 @@ const BottomCards: React.FC = () => {
           <img 
             src={BottomCardImage4} 
             alt="Bottom Card 4" 
-            className="
-              absolute top-[1000px] h-[600px] w-[500px] object-contain
-              [@media(min-width:1280px)]:left-[740px] [@media(min-width:1600px)]:left-[940px]
-              [@media(max-width:1279px)]:right-[15px] [@media(max-width:1279px)]:left-auto
+            className="tilt-animation
+              absolute top-[1000px] h-[600px] w-[500px] object-contain [@media(min-width:1280px)]:left-[740px] [@media(min-width:1600px)]:left-[940px] [@media(max-width:1279px)]:right-[15px] [@media(max-width:1279px)]:left-auto
             "
             style={{ maxHeight: '100%' }}
           />
@@ -86,16 +90,14 @@ const BottomCards: React.FC = () => {
         </div>
       </div>
 
-      {/* Tablet & Mobile View) */}
+      {/* Tablet & Mobile View */}
       <div className="[@media(min-width:900px)]:hidden block bg-[#FCFAF4] relative">
         <div className="w-full h-full px-4 pt-8 pb-20">
           <div className="mb-10">
             <BottomCardsText />
           </div>
-          
-          {/* Swipeable gallery for images */}
+
           <div className="relative w-full h-[500px] [@media(max-width:639px)]:h-[450px]">
-            {/* Navigation buttons */}
             <button 
               className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 sm:p-3 shadow-md"
               onClick={() => handleSwipe('left')}
@@ -109,19 +111,17 @@ const BottomCards: React.FC = () => {
               →
             </button>
 
-            {/* Swipable image */}
             <div className="flex justify-center items-center h-full px-2 sm:px-4">
               <img
                 src={swipePages[currentSwipeIndex].image}
                 alt={swipePages[currentSwipeIndex].alt}
-                className={`w-full max-w-[90%] sm:max-w-[80%] h-[400px] [@media(max-width:639px)]:h-[350px] object-contain rounded-xl ${
+                className={`tilt-animation w-full max-w-[90%] sm:max-w-[80%] h-[400px] [@media(max-width:639px)]:h-[350px] object-contain rounded-xl ${
                   swipePages[currentSwipeIndex].rotate === 5 ? 'rotate-5' : 
                   swipePages[currentSwipeIndex].rotate === -5 ? 'rotate-[-5deg]' : ''
                 }`}
               />
             </div>
 
-            {/* Indicator dots */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
               {swipePages.map((_, index) => (
                 <div 

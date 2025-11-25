@@ -26,7 +26,7 @@ const MiddleCards: React.FC = () => {
 
   return (
     <section 
-      id="description" // ← Critical for scroll navigation
+      id="description" 
       className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden">
 
       {/* Desktop view */}
@@ -36,14 +36,12 @@ const MiddleCards: React.FC = () => {
           <Phase1MiddleCard />
         </div>
 
-        {/*applies only at 1280px+ */}
         <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[630px] [@media(min-width:1280px)]:left-[505px]">
           <Phase2MiddleCard />
         </div>
         <div className="absolute top-[960px] left-[15px]">
           <Phase3MiddleCard />
         </div>
-        {/*applies only at 1280px+ */}
         <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] [@media(min-width:1280px)]:left-[505px]">
           <Phase4MiddleCard />
         </div>

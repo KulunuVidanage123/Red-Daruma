@@ -50,7 +50,6 @@ const Footer: React.FC = () => {
         style={{ backgroundImage: `url(${FooterMobileImage})` }}
       />
       
-      {/* FooterGradient overlay - hidden on screens 1280px and below */}
       <div className="[@media(max-width:1280px)]:hidden absolute top-[100px] left-1/2 transform -translate-x-1/2 z-10">
         <img 
           src={FooterGradient} 

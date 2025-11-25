@@ -9,25 +9,9 @@ import { XCircle } from "lucide-react";
 
 const Slider: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const sidebarRef = useRef<HTMLDivElement>(null);
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-
-    if (menuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuOpen]);
-
-  // Navigation items with mapping to section IDs
   const navItems = [
     { label: 'About Us', id: 'about-us' },
     { label: 'Description', id: 'description' },
@@ -37,18 +21,38 @@ const Slider: React.FC = () => {
   ];
 
   const handleNavClick = (id: string) => {
-    setMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; 
+      const offset = isDesktop ? 80 : 120;
       const y = element.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
+    setMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileRef.current && !mobileRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen && !isDesktop) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen, isDesktop]);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="relative w-screen h-[720px] [@media(max-width:899px)]:h-[800px] overflow-hidden">
-      
       {/* Background Images */}
       <div
         className="w-full h-[750px] [@media(max-width:1599px)]:hidden bg-cover bg-center absolute inset-0"
@@ -67,65 +71,42 @@ const Slider: React.FC = () => {
       <img
         src={RedDaruma}
         alt="Red Daruma"
-        className="absolute top-[55px] left-[40px] w-[250px] h-[40px]
-                   [@media(max-width:899px)]:top-[45px] [@media(max-width:899px)]:left-[40px]
-                   [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px]
-                   [@media(min-width:1600px)]:left-[80px]"
+        className="absolute top-[120px] left-[40px] w-[250px] h-[40px] [@media(max-width:899px)]:top-[45px] [@media(max-width:899px)]:left-[40px] [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px] [@media(min-width:1600px)]:left-[80px]"
       />
 
-      {/* Nav Icon */}
-      <div className="absolute top-[50px] right-[40px] [@media(max-width:899px)]:top-[30px] [@media(max-width:899px)]:right-[20px] [@media(min-width:1600px)]:right-[80px]">
-        <button
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-          className="focus:outline-none bg-transparent border-0 cursor-pointer"
-        >
-          <img 
-            src={NavIcon} 
-            alt="Navigation Icon" 
-            className="w-[50px] h-[60px] pointer-events-none"
-          />
-        </button>
-      </div>
-
-      {/* Sidebar */}
-      {menuOpen && (
-        <div
-          ref={sidebarRef}
-          className="fixed top-0 right-[1px] h-[450px] w-[210px] shadow-xl z-50
-                    rounded-l-[20px]  overflow-hidden 
-                    transition-transform duration-300 ease-out
-                    [@media(max-width:899px)]:w-screen
-                    [@media(max-width:899px)]:rounded-none
-                    [@media(max-width:899px)]:h-[350px]" 
-          style={{
-            transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
-            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
-            backdropFilter: 'blur(0px)', 
-            WebkitBackdropFilter: 'blur(4px)', 
-          }}
-      >
-
-          {/* Close Button */}
+      {/* Nav Icon mobile */}
+      {!isDesktop && (
+        <div className="absolute top-[100px] right-[40px] [@media(max-width:899px)]:top-[30px] [@media(max-width:899px)]:right-[20px]">
           <button
-            onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
-            className="absolute top-[20px] right-[25px] p-1 
-                      bg-transparent border-0 flex items-center justify-center 
-                      text-gray-700 hover:text-red-600 transition-all duration-200"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+            className="focus:outline-none bg-transparent border-0 cursor-pointer"
           >
-            <XCircle className="w-8 h-8" />
+            <img 
+              src={NavIcon} 
+              alt="Navigation Icon" 
+              className="w-[50px] h-[60px] pointer-events-none"
+            />
           </button>
+        </div>
+      )}
 
-          {/* Menu Items */}
-          <ul
-            className="flex flex-col mt-[60px] list-none space-y-[40px] px-[50px]
-                      [@media(max-width:899px)]:items-center [@media(max-width:899px)]:px-0"
-          >
+      {/* DESKTOP NAVBAR */}
+      {isDesktop && (
+        <div
+          className="fixed top-0 left-0 w-full z-50"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+            height: '80px', 
+          }}
+        >
+          <ul className="flex flex-row justify-center items-start h-full list-none gap-[180px] pt-[8px]">
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="py-6 text-[20px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200"
+                className="text-[24px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 px-4 py-2 rounded"
                 style={{ fontFamily: "'Kalam', cursive" }}
                 onClick={() => handleNavClick(item.id)}
               >
@@ -136,7 +117,41 @@ const Slider: React.FC = () => {
         </div>
       )}
 
-      {/* Content Sections */}
+      {/* MOBILE MENU */}
+      {menuOpen && !isDesktop && (
+        <div
+          ref={mobileRef}
+          className="fixed top-0 right-0 h-[350px] w-screen shadow-xl z-50 rounded-none overflow-hidden transition-transform duration-300 ease-out"
+          style={{
+            transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
+            background: 'linear-gradient(to bottom, rgba(139, 179, 214, 0.95), rgba(151, 180, 206, 0.85))',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+          }}
+        >
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="absolute top-[20px] right-[25px] p-1 bg-transparent border-0 flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200"
+          >
+            <XCircle className="w-8 h-8" />
+          </button>
+
+          <ul className="flex flex-col mt-[50px] list-none space-y-[40px] px-0 items-center">
+            {navItems.map((item, index) => (
+              <li
+                key={index}
+                className="py-4 text-[20px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center"
+                style={{ fontFamily: "'Kalam', cursive" }}
+                onClick={() => handleNavClick(item.id)}
+              >
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="[@media(max-width:1599px)]:hidden absolute bottom-[50px] left-[50px] z-10">
         <div className="flex flex-col gap-[20px]">
           <SliderTitle />
@@ -160,8 +175,7 @@ const Slider: React.FC = () => {
       <img
         src={BottomLogos}
         alt="Bottom Logos"
-        className="absolute bottom-[5px] left-0 w-full h-auto animate-scroll-x
-                   [@media(max-width:899px)]:bottom-[100px] [@media(min-width:1600px)]:bottom-[10px]"
+        className="absolute bottom-[5px] left-0 w-full h-auto animate-scroll-x [@media(max-width:899px)]:bottom-[100px] [@media(min-width:1600px)]:bottom-[10px]"
       />
     </div>
   );
