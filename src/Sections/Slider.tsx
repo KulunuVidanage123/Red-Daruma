@@ -125,22 +125,22 @@ const Slider: React.FC = () => {
             background: '#B5C7EB', 
             backdropFilter: 'none',
             WebkitBackdropFilter: 'none',
-            height: '80px',
+            height: '350px',
           }}
         >
           <button
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
-            className="absolute top-[20px] right-[25px] p-1 bg-transparent border-0 flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200"
+            className="absolute top-[10px] right-[10px] p-1 bg-transparent border-0 flex items-center justify-center text-gray-700 hover:text-red-600 transition-all duration-200"
           >
             <XCircle className="w-8 h-8" />
           </button>
 
-          <ul className="flex flex-col mt-[50px] list-none space-y-[40px] px-0 items-center">
+          <ul className="flex flex-col mt-[40px] list-none space-y-[30px] px-0 items-center">
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="py-4 text-[20px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center"
+                className="py-4 text-[22px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center"
                 style={{ fontFamily: "'Kalam', cursive" }}
                 onClick={() => handleNavClick(item.id)}
               >

@@ -23,7 +23,6 @@ html, body {
 }
 
 .animate-scroll-x {
-  /* adjust duration, easing and distance as needed */
   animation: scroll-x 10s ease-in-out infinite;
   will-change: transform;
 }
@@ -60,7 +59,7 @@ html, body {
 }
 
 
-/* Phase 1 & 3: move right, but stay on screen */
+/* card 1 & 3: move right*/
 @keyframes shuttleRight {
   0%, 100% {
     transform: translateX(0);
@@ -70,7 +69,7 @@ html, body {
   }
 }
 
-/* Phase 2 & 4: move left, but stay on screen */
+/* card 2 & 4: move left*/
 @keyframes shuttleLeft {
   0%, 100% {
     transform: translateX(0);
@@ -115,9 +114,22 @@ html, body {
 
 @keyframes blinkEye {
   0%, 45%, 55%, 100% {
-    background-position: center top; /* Open: black band above view */
+    background-position: center top; 
   }
   48%, 52% {
-    background-position: center center; /* Closed: black band covers center */
+    background-position: center center; 
   }
+}
+
+@keyframes continuousFade {      
+  0%, 100% {
+    opacity: 0; 
+  }
+  50% {
+    opacity: 1;   
+  }
+}
+
+.animate-continuous-fade {
+  animation: continuousFade 4s ease-in-out infinite;
 }
