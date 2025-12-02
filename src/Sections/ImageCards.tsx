@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import BGImageCard from '../assets/BGImageCard.png'; 
+import React, { useState, useEffect } from 'react';
+import BGImageCard from '../assets/BGImageCard.png';
 import ImageCard1 from '../assets/ImageCard1.png';
 import ImageCard2 from '../assets/ImageCard2.png';
 import ImageCard3 from '../assets/ImageCard3.png';
@@ -10,6 +10,10 @@ import ImageCard7 from '../assets/ImageCard7.png';
 
 const ImageCards: React.FC = () => {
   const [currentSwipeIndex, setCurrentSwipeIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth < 640;
+  const isTablet = windowWidth >= 640 && windowWidth < 1024;
+  const isDesktop = windowWidth >= 1024;
 
   const swipePages = [
     { topImage: ImageCard4, bottomImage: ImageCard1, topAlt: "Image Card 4", bottomAlt: "Image Card 1" },
@@ -28,46 +32,61 @@ const ImageCards: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <section className="w-full h-[650px] [@media(max-width:639px)]:h-[900px] bg-[#FCFAF4] relative">
-
-      {/* EXTRA LARGE SCREEN */}
-      <div className="hidden [@media(min-width:1536px)]:block">
-        <img 
-          src={BGImageCard} 
-          alt="Background Image Card XL" 
-          className="w-full h-[600px] object-cover" 
+    <section
+      className="w-full bg-[#FCFAF4] relative overflow-hidden"
+      style={{ height: isMobile ? '900px' : '650px' }}
+    >
+      {/* Desktop */}
+      {isDesktop && (
+        <img
+          src={BGImageCard}
+          alt="Background Image Card"
+          className="w-full h-[600px] object-cover"
         />
-      </div>
+      )}
 
-      {/* MOBILE VIEW */}
-      <div className="[@media(max-width:639px)]:block hidden">
+      {/* Mobile */}
+      {isMobile && (
         <div className="relative w-full h-full">
-          <button className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
-            onClick={() => handleSwipe('left')}>
+          <button
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
+            onClick={() => handleSwipe('left')}
+            aria-label="Swipe left"
+          >
             ←
           </button>
-          <button className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
-            onClick={() => handleSwipe('right')}>
+          <button
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
+            onClick={() => handleSwipe('right')}
+            aria-label="Swipe right"
+          >
             →
           </button>
 
-          <div className="flex flex-col items-center justify-center h-full px-4 space-y-6">
+          <div className="flex flex-col items-center justify-center h-full px-4 space-y-6 relative">
             <img
               src={swipePages[currentSwipeIndex].topImage}
               alt={swipePages[currentSwipeIndex].topAlt}
-              className="absolute top-[400px] w-full max-w-[90%] h-[400px] object-cover rounded-[15px]"
+              className="absolute top-[10px] w-full max-w-[90%] h-[400px] object-cover rounded-[15px]"
             />
             <img
               src={swipePages[currentSwipeIndex].bottomImage}
               alt={swipePages[currentSwipeIndex].bottomAlt}
-              className="absolute bottom-[-370px] w-full max-w-[90%] h-[400px] object-cover rounded-[15px]"
+              className="absolute bottom-[70px] w-full max-w-[90%] h-[400px] object-cover rounded-[15px]"
             />
           </div>
 
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-4">
             {swipePages.map((_, index) => (
-              <div key={index}
+              <div
+                key={index}
                 onClick={() => setCurrentSwipeIndex(index)}
                 className={`w-5 h-5 rounded-full cursor-pointer transition-all duration-300 ${
                   index === currentSwipeIndex ? 'bg-orange-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'
@@ -76,29 +95,31 @@ const ImageCards: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      )}
 
-      {/* TABLET VIEW */}
-      <div className="[@media(min-width:640px)]:block [@media(min-width:900px)]:hidden hidden">
-        <div className="relative w-full h-[1000px]">
+      {/* Tablet */}
+      {isTablet && (
+        <div className="relative w-full" style={{ height: '1000px' }}>
           <button
             className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-3 shadow-md"
             onClick={() => handleSwipe('left')}
+            aria-label="Swipe left"
           >
             ←
           </button>
           <button
             className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-3 shadow-md"
             onClick={() => handleSwipe('right')}
+            aria-label="Swipe right"
           >
             →
           </button>
 
-          <div className="flex flex-col items-center justify-center h-full px-6 space-y-10">
+          <div className="flex flex-col items-center justify-center h-full px-6 space-y-10 relative">
             <img
               src={swipePages[currentSwipeIndex].topImage}
               alt={swipePages[currentSwipeIndex].topAlt}
-              className="absolute top-[100px] w-full max-w-[75%] h-[550px] object-cover rounded-[20px]"
+              className="absolute top-[10px] w-full max-w-[75%] h-[550px] object-cover rounded-[20px]"
             />
             <img
               src={swipePages[currentSwipeIndex].bottomImage}
@@ -114,14 +135,14 @@ const ImageCards: React.FC = () => {
                 onClick={() => setCurrentSwipeIndex(index)}
                 className={`w-6 h-6 rounded-full cursor-pointer transition-all duration-300 ${
                   index === currentSwipeIndex
-                    ? "bg-orange-500 scale-125"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    ? 'bg-orange-500 scale-125'
+                    : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

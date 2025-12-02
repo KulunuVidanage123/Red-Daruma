@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AboutUsText from '@/components/AboutUsText';
 import MiddleCardsText from '@/components/MiddleCardsText';
 import Phase1MiddleCard from '@/components/Phase1MiddleCard';
@@ -8,12 +8,15 @@ import Phase4MiddleCard from '@/components/Phase4MiddleCard';
 
 const MiddleCards: React.FC = () => {
   const [currentSwipeIndex, setCurrentSwipeIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth < 640;
+  const isDesktop = windowWidth >= 1024;
 
   const swipePages = [
-    { component: <Phase1MiddleCard />, title: "Phase 1" },
-    { component: <Phase2MiddleCard />, title: "Phase 2" },
-    { component: <Phase3MiddleCard />, title: "Phase 3" },
-    { component: <Phase4MiddleCard />, title: "Phase 4" }
+    { component: <Phase1MiddleCard />, title: 'Phase 1' },
+    { component: <Phase2MiddleCard />, title: 'Phase 2' },
+    { component: <Phase3MiddleCard />, title: 'Phase 3' },
+    { component: <Phase4MiddleCard />, title: 'Phase 4' },
   ];
 
   const handleSwipe = (direction: 'left' | 'right') => {
@@ -24,80 +27,90 @@ const MiddleCards: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const sectionHeight = isDesktop ? '1700px' : isMobile ? '1100px' : '1100px';
+
   return (
-    <section 
-      id="description" 
-      className="w-full h-[1700px] [@media(max-width:899px)]:h-[1100px] [@media(max-width:639px)]:h-[1500px] bg-[#FCFAF4] relative overflow-x-hidden"
+    <section
+      id="description"
+      className="w-full bg-[#FCFAF4] relative overflow-x-hidden"
+      style={{ height: sectionHeight }}
     >
-      {/* Desktop view — with animation */}
-      <div className="[@media(max-width:899px)]:hidden block">
-        <MiddleCardsText />
-        
-        {/* Phase 1: left → right */}
-        <div className="absolute top-[300px] left-[15px]">
-          <div className="animate-shuttle-right">
-            <Phase1MiddleCard />
-          </div>
-        </div>
-
-        {/* Phase 2: right → left */}
-        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[630px] [@media(min-width:1280px)]:left-[505px]">
-          <div className="animate-shuttle-left">
-            <Phase2MiddleCard />
-          </div>
-        </div>
-
-        {/* Phase 3: left → right */}
-        <div className="absolute top-[960px] left-[15px]">
-          <div className="animate-shuttle-right">
-            <Phase3MiddleCard />
-          </div>
-        </div>
-
-        {/* Phase 4: right → left */}
-        <div className="[@media(min-width:1280px)]:right-[15px] [@media(min-width:1280px)]:left-auto absolute top-[1295px] [@media(min-width:1280px)]:left-[505px]">
-          <div className="animate-shuttle-left">
-            <Phase4MiddleCard />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile & tablet view — NO animation */}
-      <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[50px]">
-        <AboutUsText />
-        <div className="relative w-full h-full mt-20">      
-          <button 
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
-            onClick={() => handleSwipe('left')}
-          >
-            ←
-          </button>          
-          <button 
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
-            onClick={() => handleSwipe('right')}
-          >
-            →
-          </button>
-
-          <div className="flex justify-center items-center h-full px-4">
-            <div className="w-full max-w-[95%]">
-              {swipePages[currentSwipeIndex].component}
+      {/* DESKTOP */}
+      {isDesktop && (
+        <>
+          <MiddleCardsText />
+          {/* Phase 1 */}
+          <div className="absolute top-[300px] left-[15px]">
+            <div className="animate-shuttle-right">
+              <Phase1MiddleCard />
             </div>
           </div>
+          {/* Phase 2 */}
+          <div className="absolute top-[630px] right-[15px] xl:right-[15px] lg:left-[505px]">
+            <div className="animate-shuttle-left">
+              <Phase2MiddleCard />
+            </div>
+          </div>
+          {/* Phase 3 */}
+          <div className="absolute top-[960px] left-[15px]">
+            <div className="animate-shuttle-right">
+              <Phase3MiddleCard />
+            </div>
+          </div>
+          {/* Phase 4 */}
+          <div className="absolute top-[1295px] right-[15px] xl:right-[15px] lg:left-[505px]">
+            <div className="animate-shuttle-left">
+              <Phase4MiddleCard />
+            </div>
+          </div>
+        </>
+      )}
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-4">
-            {swipePages.map((_, index) => (
-              <div 
-                key={index}
-                onClick={() => setCurrentSwipeIndex(index)}
-                className={`w-5 h-5 rounded-full cursor-pointer transition-all duration-300 ${
-                  index === currentSwipeIndex ? 'bg-orange-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+      {/* MOBILE & TABLET */}
+      {!isDesktop && (
+        <div className="px-[50px] pt-[120px] -mt-[50px]">
+          <AboutUsText />
+          <div className="relative w-full h-[800px] mt-[-200px]">
+            <button
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
+              onClick={() => handleSwipe('left')}
+              aria-label="Previous phase"
+            >
+              ←
+            </button>
+            <button
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 shadow-md"
+              onClick={() => handleSwipe('right')}
+              aria-label="Next phase"
+            >
+              →
+            </button>
+
+            <div className="flex justify-center items-center h-full px-4">
+              <div className="w-full max-w-[95%]">{swipePages[currentSwipeIndex].component}</div>
+            </div>
+
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-4">
+              {swipePages.map((_, index) => (
+                <div
+                  key={index}
+                  onClick={() => setCurrentSwipeIndex(index)}
+                  className={`w-5 h-5 rounded-full cursor-pointer transition-all duration-300 ${
+                    index === currentSwipeIndex
+                      ? 'bg-orange-500 scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

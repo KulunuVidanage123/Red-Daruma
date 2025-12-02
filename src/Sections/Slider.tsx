@@ -5,12 +5,12 @@ import NavIcon from '../assets/NavIcon.png';
 import BottomLogos from '../assets/BottomLogos.png';
 import SliderTitle from '../components/SliderTitle';
 import SliderButtons from '../components/SliderButtons';
-import { XCircle } from "lucide-react";
+import { XCircle } from 'lucide-react';
 
 const Slider: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const mobileRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 900);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
   const navItems = [
     { label: 'About Us', id: 'about-us' },
@@ -46,63 +46,63 @@ const Slider: React.FC = () => {
   }, [menuOpen, isDesktop]);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 900);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <div className="relative w-screen h-[720px] [@media(max-width:899px)]:h-[800px] overflow-hidden">
-      {/* Background Images */}
+    <div className="relative w-screen h-[720px] md:h-[800px] overflow-hidden">
       <div
-        className="w-full h-[750px] [@media(max-width:1599px)]:hidden bg-cover bg-center absolute inset-0"
-        style={{ backgroundImage: `url(${BGImage1})` }}
-      />
-      <div
-        className="w-full h-[720px] [@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden bg-cover bg-center absolute inset-0"
-        style={{ backgroundImage: `url(${BGImage1})` }}
-      />
-      <div
-        className="w-full h-[720px] [@media(min-width:900px)]:hidden bg-cover bg-center absolute inset-0"
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ backgroundImage: `url(${BGImage1})` }}
       />
 
-      {/* Red Daruma */}
-      <img
-        src={RedDaruma}
-        alt="Red Daruma"
-        className="absolute top-[20px] left-[50px] w-[250px] h-[40px] [@media(max-width:899px)]:top-[45px] [@media(max-width:899px)]:left-[40px] [@media(max-width:899px)]:w-[180px] [@media(max-width:899px)]:h-[30px] [@media(min-width:900px)]:fixed [@media(min-width:900px)]:z-60 [@media(min-width:1600px)]:left-[80px]"
-      />
-
-      {/* Nav Icon mobile */}
+      {/* Red Daruma — Mobile */}
       {!isDesktop && (
-        <div className="absolute top-[100px] right-[40px] [@media(max-width:899px)]:top-[30px] [@media(max-width:899px)]:right-[20px]">
+        <img
+          src={RedDaruma}
+          alt="Red Daruma"
+          className="absolute top-[50px] left-[40px] w-[200px] h-[30px] z-10 md:top-[45px] md:left-[40px] md:w-[180px]"
+        />
+      )}
+      {/* Red Daruma — Desktop */}
+      {isDesktop && (
+        <img
+          src={RedDaruma}
+          alt="Red Daruma"
+          className="fixed top-[20px] left-[40px] w-[250px] h-[40px] z-[51] 2xl:left-[80px]"
+        />
+      )}
+
+      {/* Mobile menu toggle */}
+      {!isDesktop && (
+        <div className="absolute top-[35px] right-[30px] md:top-[30px] md:right-[20px] z-50">
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             className="focus:outline-none bg-transparent border-0 cursor-pointer"
           >
-            <img 
-              src={NavIcon} 
-              alt="Navigation Icon" 
+            <img
+              src={NavIcon}
+              alt="Navigation Icon"
               className="w-[50px] h-[60px] pointer-events-none"
             />
           </button>
         </div>
       )}
 
-      {/* DESKTOP NAVBAR */}
+      {/* Desktop navbar */}
       {isDesktop && (
         <div
-          className="fixed top-0 left-0 w-full z-50"
+          className="fixed top-0 left-0 w-full z-50 h-[80px]"
           style={{
             background: 'linear-gradient(to bottom, rgba(210, 234, 255, 0.51), rgba(149, 200, 244, 0.5))',
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
-            height: '80px',
           }}
         >
-          <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px] [@media(min-width:1600px)]:pr-[200px] [@media(min-width:1600px)]:gap-[180px]">
+          <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px] 2xl:pr-[200px] 2xl:gap-[180px]">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -117,15 +117,13 @@ const Slider: React.FC = () => {
         </div>
       )}
 
-      {/* MOBILE MENU */}
+      {/* Mobile menu */}
       {menuOpen && !isDesktop && (
         <div
-          className="fixed top-0 left-0 w-full z-50"
+          ref={mobileRef}
+          className="fixed top-0 left-0 w-full z-50 h-[350px]"
           style={{
-            background: '#B5C7EB', 
-            backdropFilter: 'none',
-            WebkitBackdropFilter: 'none',
-            height: '350px',
+            background: '#B5C7EB',
           }}
         >
           <button
@@ -151,30 +149,24 @@ const Slider: React.FC = () => {
         </div>
       )}
 
-      <div className="[@media(max-width:1599px)]:hidden absolute bottom-[50px] left-[50px] z-10">
-        <div className="flex flex-col gap-[20px]">
+      {/* Content: Title & Buttons */}
+      {isDesktop ? (
+        <div className="z-10 absolute bottom-[30px] left-[40px] flex flex-col items-start gap-[8px] 2xl:bottom-[50px] 2xl:left-[50px] 2xl:gap-[20px]">
           <SliderTitle />
           <SliderButtons />
         </div>
-      </div>
-
-      <div className="[@media(max-width:899px)]:hidden [@media(min-width:1600px)]:hidden absolute bottom-[15px] left-[40px] flex flex-col items-start gap-[8px] z-10">
-        <SliderTitle />
-        <SliderButtons />
-      </div>
-
-      <div className="[@media(min-width:900px)]:hidden block px-[50px] pt-[120px] -mt-[1px] z-10">
-        <div className="relative w-full h-full flex flex-col items-center justify-center gap-[30px] top-[250px]">
+      ) : (
+        <div className="z-10 relative top-[350px] flex flex-col items-center justify-center px-[50px] gap-[30px]">
           <SliderTitle />
           <SliderButtons />
         </div>
-      </div>
+      )}
 
       {/* Bottom logos */}
       <img
         src={BottomLogos}
         alt="Bottom Logos"
-        className="absolute bottom-[5px] left-0 w-full h-auto animate-scroll-x [@media(max-width:899px)]:bottom-[100px] [@media(min-width:1600px)]:bottom-[10px]"
+        className="absolute bottom-[5px] left-0 w-full h-auto animate-scroll-x md:bottom-[100px] 2xl:bottom-[10px]"
       />
     </div>
   );

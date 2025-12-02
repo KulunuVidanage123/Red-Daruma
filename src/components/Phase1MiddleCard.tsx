@@ -1,83 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TopCardsFrame from '@/assets/TopCardsFrame.png';
 import MiddleCard1 from '../assets/MiddleCard1.png';
 import MiddleCard1Mobile from '../assets/MiddleCard1Mobile.png';
 
 const Phase1MiddleCard: React.FC = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isDesktop = windowWidth >= 1024;
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="flex justify-center relative">
-      {/* Desktop view - 900px and above */}
-      <img 
-        src={TopCardsFrame} 
-        alt="Phase 1 Middle Card"
-        className="w-[1000px] h-[300px] object-cover [@media(max-width:899px)]:hidden block"
-      />
-      <img
-        src={MiddleCard1}
-        alt="Phase 1 Card"
-        className="w-[500px] h-[300px] object-cover absolute top-0 left-[500px] rounded-tr-[20px] rounded-br-[20px] [@media(max-width:899px)]:hidden block"
-      />
-      <h2
-        className="absolute top-[-15px] left-[30px] text-[40px] [@media(max-width:899px)]:hidden block"
-        style={{
-          fontFamily: 'Kalam, cursive',
-          color: '#DF4F16',
-          fontWeight: 'bold',
-        }}
-      >
-        Phase 1
-      </h2>
-      <p
-        className="absolute top-[100px] left-[30px] text-base text-[15px] max-w-[460px] leading-relaxed [@media(max-width:899px)]:hidden block"
-        style={{
-          fontFamily: 'Kalam, cursive',
-          color: 'black',
-          fontWeight: 'normal',
-        }}
-      >
-        Built by machines. Blessed with luck.<br></br> In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, 
-        a Daruma doll has one eye painted when setting a goal, the other when it's achieved. Buying $D is your first painted eye a cosmic
-        wish for health, wealth, and happiness.
-      </p>
+      {/* DESKTOP VIEW */}
+      {isDesktop && (
+        <>
+          <img
+            src={TopCardsFrame}
+            alt="Phase 1 Middle Card"
+            className="w-[1000px] h-[300px] object-cover"
+          />
+          <img
+            src={MiddleCard1}
+            alt="Phase 1 Card"
+            className="w-[500px] h-[300px] object-cover absolute top-0 left-[500px] rounded-tr-[20px] rounded-br-[20px]"
+          />
+          <h2
+            className="absolute top-[-15px] left-[30px] text-[40px]"
+            style={{
+              fontFamily: 'Kalam, cursive',
+              color: '#DF4F16',
+              fontWeight: 'bold',
+            }}
+          >
+            Phase 1
+          </h2>
+          <p
+            className="absolute top-[100px] left-[30px] text-[15px] max-w-[460px] leading-relaxed"
+            style={{
+              fontFamily: 'Kalam, cursive',
+              color: 'black',
+              fontWeight: 'normal',
+            }}
+          >
+            Built by machines. Blessed with luck.<br />
+            In{' '}
+            <span style={{ color: 'red', fontWeight: 'bold' }}>
+              Japanese tradition
+            </span>
+            , a Daruma doll has one eye painted when setting a goal, the other
+            when it's achieved. Buying $D is your first painted eye — a cosmic
+            wish for health, wealth, and happiness.
+          </p>
+        </>
+      )}
 
-      {/* Mobile and tablet view - below 900px */}
-      <div className="relative top-[150px]">
-        <img 
-          src={TopCardsFrame} 
-          alt="Top Cards Frame" 
-          className="w-[600px] h-[400px] rotate-[-90deg] [@media(min-width:900px)]:hidden block" 
-        />
-        <img 
-          src={MiddleCard1Mobile} 
-          alt="Mobile Top Cards Image 1" 
-          className="absolute top-[-80px] left-[295px] transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-tl-[20px] rounded-bl-[20px] rounded-tr-[20px] rounded-br-[20px] [@media(min-width:900px)]:hidden block z-10" 
-        />
-        <h2
-          className="text-center absolute top-[230px] left-1/2 transform -translate-x-1/2 text-[32px] [@media(min-width:900px)]:hidden block"
-          style={{
-            fontFamily: 'Kalam, cursive',
-            color: '#DF4F16',
-            fontWeight: 'bold',
-          }}
-        >
-          Phase 1
-        </h2>
-        <p 
-          className="text-center absolute top-[310px] left-1/2 transform -translate-x-1/2 text-black px-4 [@media(min-width:900px)]:hidden block"
-          style={{ 
-            fontFamily: 'Kalam, cursive',
-            fontSize: '14px',
-            maxWidth: '90%',
-            lineHeight: '1.4'
-          }}
-        >
-          Built by machines. Blessed with luck.
-          <br />
-          In <span style={{ color: 'red', fontWeight: 'bold' }}>Japanese tradition</span>, a Daruma doll has 
-          one eye painted when setting a goal, the other when it's achieved. Buying $D is your first
-          painted eye a cosmic wish for health, wealth, and happiness.
-        </p>
-      </div>
+      {/* MOBILE & TABLET */}
+      {!isDesktop && (
+        <div className="relative top-[150px]">
+          <img
+            src={TopCardsFrame}
+            alt="Top Cards Frame"
+            className="w-[600px] h-[400px] rotate-[-90deg] mx-auto"
+          />
+          <img
+            src={MiddleCard1Mobile}
+            alt="Mobile Top Cards Image 1"
+            className="absolute top-[-80px] left-1/2 transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-[20px] z-10"
+          />
+          <h2
+            className="text-center absolute top-[230px] left-1/2 transform -translate-x-1/2 text-[32px]"
+            style={{
+              fontFamily: 'Kalam, cursive',
+              color: '#DF4F16',
+              fontWeight: 'bold',
+            }}
+          >
+            Phase 1
+          </h2>
+          <p
+            className="text-center absolute top-[310px] left-1/2 transform -translate-x-1/2 text-black px-4"
+            style={{
+              fontFamily: 'Kalam, cursive',
+              fontSize: '14px',
+              maxWidth: '90%',
+              lineHeight: '1.4',
+            }}
+          >
+            Built by machines. Blessed with luck.
+            <br />
+            In{' '}
+            <span style={{ color: 'red', fontWeight: 'bold' }}>
+              Japanese tradition
+            </span>
+            , a Daruma doll has one eye painted when setting a goal, the other
+            when it's achieved. Buying $D is your first painted eye — a cosmic
+            wish for health, wealth, and happiness.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
