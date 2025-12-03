@@ -37,7 +37,7 @@ const MiddleCards: React.FC = () => {
     <section
       id="description"
       className={`w-full bg-[#FCFAF4] relative overflow-x-hidden ${
-        isDesktop ? 'h-[1700px]' : isMobile ? 'h-[1500px]' : 'h-[1100px]'
+        isDesktop ? 'h-[1700px]' : isMobile ? 'h-[1100px]' : 'h-[1100px]'
       }`}
     >
       {/* DESKTOP */}
