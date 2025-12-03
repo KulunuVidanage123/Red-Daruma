@@ -75,7 +75,7 @@ const Slider: React.FC = () => {
         />
       )}
 
-      {/* Mobile menu toggle */}
+      {/* Mobile menu */}
       {!isDesktop && (
         <div className="absolute top-[35px] right-[30px] md:top-[30px] md:right-[20px] z-50">
           <button
@@ -95,19 +95,14 @@ const Slider: React.FC = () => {
       {/* Desktop navbar */}
       {isDesktop && (
         <div
-          className="fixed top-0 left-0 w-full z-50 h-[80px]"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(210, 234, 255, 0.51), rgba(149, 200, 244, 0.5))',
-            backdropFilter: 'blur(0px)',
-            WebkitBackdropFilter: 'blur(0px)',
-          }}
+          className="fixed top-0 left-0 w-full z-50 h-[80px] 
+          bg-[linear-gradient(to_bottom,rgba(210,234,255,0.51),rgba(149,200,244,0.5))] backdrop-blur-[0px]"
         >
           <ul className="flex flex-row justify-end items-start h-full list-none gap-[130px] pt-[8px] pr-[50px] 2xl:pr-[200px] 2xl:gap-[180px]">
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="text-[24px] font-bold text-black hover:text-red-600 cursor-pointer transition-all duration-200 transform hover:scale-105"
-                style={{ fontFamily: "'Kalam', cursive" }}
+                className="text-[24px] font-bold text-black hover:text-red-600 cursor-pointer transition-all duration-200 transform hover:scale-105 font-['Kalam']"
                 onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
@@ -121,10 +116,7 @@ const Slider: React.FC = () => {
       {menuOpen && !isDesktop && (
         <div
           ref={mobileRef}
-          className="fixed top-0 left-0 w-full z-50 h-[350px]"
-          style={{
-            background: '#B5C7EB',
-          }}
+          className="fixed top-0 left-0 w-full z-50 h-[350px] bg-[#B5C7EB]"
         >
           <button
             onClick={() => setMenuOpen(false)}
@@ -138,8 +130,7 @@ const Slider: React.FC = () => {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="py-4 text-[22px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center"
-                style={{ fontFamily: "'Kalam', cursive" }}
+                className="py-4 text-[22px] font-bold text-black hover:bg-[#c5e5ff] hover:bg-opacity-50 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center font-['Kalam']"
                 onClick={() => handleNavClick(item.id)}
               >
                 {item.label}

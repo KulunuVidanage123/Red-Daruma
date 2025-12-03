@@ -40,8 +40,9 @@ const ImageCards: React.FC = () => {
 
   return (
     <section
-      className="w-full bg-[#FCFAF4] relative overflow-hidden"
-      style={{ height: isMobile ? '900px' : '650px' }}
+      className={`w-full bg-[#FCFAF4] relative overflow-hidden ${ 
+        isMobile ? 'h-[900px]' : 'h-[650px]'
+      }`}
     >
       {/* Desktop */}
       {isDesktop && (
@@ -99,7 +100,7 @@ const ImageCards: React.FC = () => {
 
       {/* Tablet */}
       {isTablet && (
-        <div className="relative w-full" style={{ height: '1000px' }}>
+        <div className="relative w-full h-[1000px]">
           <button
             className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-3 shadow-md"
             onClick={() => handleSwipe('left')}
