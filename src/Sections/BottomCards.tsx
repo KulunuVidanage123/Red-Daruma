@@ -33,33 +33,32 @@ const BottomCards: React.FC = () => {
 
   return (
     <div id="how-to-buy" className="w-full relative">
-      {/* DESKTOP */}
       {isDesktop && (
-        <div style={{ height: '1650px', backgroundColor: '#FCFAF4' }} className="relative">
-          {[
-            { image: BottomCardImage1, alt: "Bottom Card 1", top: 300 },
-            { image: BottomCardImage2, alt: "Bottom Card 2", top: 450 },
-            { image: BottomCardImage3, alt: "Bottom Card 3", top: 850 },
-            { image: BottomCardImage4, alt: "Bottom Card 4", top: 1000 },
-          ].map((card, index) => {
-            const isLeftColumn = index % 2 === 0;
-
-            let leftOffset = '100px'; 
-            if (windowWidth >= 1280) {
-              leftOffset = isLeftColumn ? '300px' : '750px';
-            } else {
-              leftOffset = isLeftColumn ? '100px' : '400px';
-            }
-            return (
-              <img
-                key={index}
-                src={card.image}
-                alt={card.alt}
-                className={`tilt-animation absolute h-[600px] w-[500px] object-contain top-[${card.top}px] left-[${leftOffset}]`}
-              />
-            );
-          })}
-
+        <div className="relative h-[1650px] bg-[#FCFAF4]">
+          {/* Card 1*/}
+          <img
+            src={BottomCardImage1}
+            alt="Bottom Card 1"
+            className="tilt-animation absolute top-[300px] left-[300px] h-[600px] w-[500px] object-contain"
+          />
+          {/* Card 2 */}
+          <img
+            src={BottomCardImage2}
+            alt="Bottom Card 2"
+            className="tilt-animation absolute top-[450px] right-[280px] h-[600px] w-[500px] object-contain"
+          />
+          {/* Card 3 */}
+          <img
+            src={BottomCardImage3}
+            alt="Bottom Card 3"
+            className="tilt-animation absolute top-[850px] left-[300px] h-[600px] w-[500px] object-contain"
+          />
+          {/* Card 4 */}
+          <img
+            src={BottomCardImage4}
+            alt="Bottom Card 4"
+            className="tilt-animation absolute top-[1000px] right-[280px] h-[600px] w-[500px] object-contain"
+          />
           <div className="relative z-10">
             <BottomCardsText />
           </div>
