@@ -21,23 +21,14 @@ const Homepage: React.FC = () => {
 
   return (
     <div
-      className="relative w-full"
-      style={{ height: isMobile ? '820px' : isDesktop ? '720px' : '800px' }}
+      className={`relative w-full ${ isMobile ? 'h-[820px]' : isDesktop ? 'h-[720px]' : 'h-[800px]' }`}
     >
-      {/* Background */}
-      {isDesktop ? (
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${HomePageImage})` }}
-        />
-      ) : (
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${HomePageMobileImage})` }}
-        />
-      )}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${isDesktop ? HomePageImage : HomePageMobileImage})` }}
+      />
 
-      {/* DESKTOP VIEW */}
+      {/* DESKTOP */}
       {isDesktop && (
         <>
           <div className="absolute z-10 flex flex-row gap-[70px] top-[310px] left-[250px]">
@@ -57,7 +48,6 @@ const Homepage: React.FC = () => {
             </div>
           </div>
 
-          {/* Title & Buttons */}
           <div className="absolute bottom-[130px] right-[250px] z-10 flex flex-col gap-[20px] 2xl:bottom-[120px] 2xl:right-[120px]">
             <SliderTitle highlightFirstWord={true} />
             <SliderButtons bgColor="black" textColor="white" />
@@ -68,10 +58,7 @@ const Homepage: React.FC = () => {
       {/* MOBILE & TABLET */}
       {!isDesktop && (
         <div className="px-[60px] pt-[120px] -mt-[50px]">
-          <div
-            className="relative flex flex-col items-center justify-center gap-[30px]"
-            style={{ top: '-140px' }}
-          >
+          <div className="relative flex flex-col items-center justify-center gap-[30px] top-[-140px]">
             <SliderTitle highlightFirstWord={true} />
             <SliderButtons bgColor="black" textColor="white" />
           </div>

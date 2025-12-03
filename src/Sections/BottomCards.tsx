@@ -72,7 +72,7 @@ const BottomCards: React.FC = () => {
             <BottomCardsText />
           </div>
 
-          <div className="relative w-full" style={{ height: isMobile ? '450px' : '500px' }}>
+          <div className={`relative w-full ${isMobile ? 'h-[450px]' : 'h-[500px]'}`}>
             <button
               className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-70 rounded-full p-2 sm:p-3 shadow-md"
               onClick={() => handleSwipe('left')}
@@ -93,13 +93,14 @@ const BottomCards: React.FC = () => {
                 src={swipePages[currentSwipeIndex].image}
                 alt={swipePages[currentSwipeIndex].alt}
                 className={`tilt-animation w-full max-w-[90%] sm:max-w-[80%] object-contain rounded-xl ${
+                  isMobile ? 'h-[350px]' : 'h-[400px]'
+                } ${
                   swipePages[currentSwipeIndex].rotate === 5
                     ? 'rotate-5'
                     : swipePages[currentSwipeIndex].rotate === -5
                     ? 'rotate-[-5deg]'
                     : ''
                 }`}
-                style={{ height: isMobile ? '350px' : '400px' }}
               />
             </div>
 

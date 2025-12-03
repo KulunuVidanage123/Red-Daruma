@@ -32,13 +32,13 @@ const MiddleCards: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const sectionHeight = isDesktop ? '1700px' : isMobile ? '1100px' : '1100px';
 
   return (
     <section
       id="description"
-      className="w-full bg-[#FCFAF4] relative overflow-x-hidden"
-      style={{ height: sectionHeight }}
+      className={`w-full bg-[#FCFAF4] relative overflow-x-hidden ${
+        isDesktop ? 'h-[1700px]' : isMobile ? 'h-[1500px]' : 'h-[1100px]'
+      }`}
     >
       {/* DESKTOP */}
       {isDesktop && (
