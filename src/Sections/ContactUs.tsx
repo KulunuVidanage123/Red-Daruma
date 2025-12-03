@@ -18,8 +18,7 @@ const ContactUs: React.FC = () => {
   return (
     <div
       id="contact-us"
-      className="w-full relative"
-      style={{ height: isDesktop ? '450px' : '800px' }}
+      className={`w-full relative ${isDesktop ? 'h-[450px]' : 'h-[800px]'}`}
     >
       <div className="flex flex-col items-center h-full pt-6">
         <ContactUsText />
@@ -36,14 +35,12 @@ const ContactUs: React.FC = () => {
               <img
                 src={ContactUsImage2}
                 alt="Contact Us Overlay"
-                className="absolute top-[15px] left-[272px] transform -translate-x-1/2 transition-transform duration-300 hover:scale-105 cursor-pointer"
-                style={{ width: '385px', height: '70px', objectFit: 'contain' }}
+                className="absolute top-[15px] left-[272px] transform -translate-x-1/2 transition-transform duration-300 hover:scale-105 cursor-pointer w-[385px] h-[70px] object-contain"
               />
               <img
                 src={ContactUsImage3}
                 alt="Contact Us Small Icon"
-                className="absolute top-[58px] left-[505px] transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110 cursor-pointer"
-                style={{ width: '65px', height: '65px', objectFit: 'contain' }}
+                className="absolute top-[58px] left-[505px] transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-110 cursor-pointer w-[65px] h-[65px] object-contain"
               />
             </div>
             <div className="mt-4">
