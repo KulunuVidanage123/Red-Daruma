@@ -59,7 +59,7 @@ const TopCardsContent2: React.FC = () => {
           <img
             src={MobileTopCardsImage2}
             alt="Mobile Top Cards Image 2"
-            className="absolute bottom-[160px] left-1/2 transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px]"
+            className="absolute bottom-[160px] left-[293px] transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px]"
           />
           <p
             className="text-center absolute top-[280px] left-1/2 transform -translate-x-1/2 text-black px-4"

@@ -63,7 +63,7 @@ const Phase4MiddleCard: React.FC = () => {
           <img
             src={MiddleCard4}
             alt="Mobile Top Cards Image 4"
-            className="absolute top-[-80px] left-1/2 transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-[20px] z-10"
+            className="absolute top-[-80px] left-[293px] transform -translate-x-1/2 w-[350px] max-w-[350px] h-[320px] rounded-[20px] z-10"
           />
           <h2
             className="text-center absolute top-[230px] left-1/2 transform -translate-x-1/2 text-[32px]"
