@@ -23,10 +23,13 @@ const Homepage: React.FC = () => {
     <div
       className={`relative w-full ${ isMobile ? 'h-[820px]' : isDesktop ? 'h-[720px]' : 'h-[800px]' }`}
     >
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${isDesktop ? HomePageImage : HomePageMobileImage})` }}
-      />
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <img
+          src={isDesktop ? HomePageImage : HomePageMobileImage}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* DESKTOP */}
       {isDesktop && (

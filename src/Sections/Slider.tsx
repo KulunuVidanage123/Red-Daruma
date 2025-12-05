@@ -53,26 +53,29 @@ const Slider: React.FC = () => {
 
   return (
     <div className="relative w-screen h-[720px] md:h-[800px] overflow-hidden">
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${BGImage1})` }}
-      />
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <img
+          src={BGImage1}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
 
-      {!isDesktop && (
+      {isDesktop ? (
+        <img
+          src={RedDaruma}
+          alt="Red Daruma"
+          className="fixed top-[20px] left-[40px] w-[250px] h-[40px] z-[51] 2xl:left-[80px]"
+        />
+      ) : (
         <img
           src={RedDaruma}
           alt="Red Daruma"
           className="absolute top-[50px] left-[40px] w-[200px] h-[30px] z-10 md:top-[45px] md:left-[40px] md:w-[180px]"
         />
       )}
-      {isDesktop && (
-        <img
-          src={RedDaruma}
-          alt="Red Daruma"
-          className="fixed top-[20px] left-[40px] w-[250px] h-[40px] z-[51] 2xl:left-[80px]"
-        />
-      )}
-
+      
       {/* Mobile menu */}
       {!isDesktop && (
         <div className="absolute top-[35px] right-[30px] md:top-[30px] md:right-[20px] z-50">

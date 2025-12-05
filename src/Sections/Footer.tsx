@@ -23,10 +23,13 @@ const Footer: React.FC = () => {
 
   return (
     <div id="community" className={`relative w-full overflow-hidden ${heightClass}`}>
-      <div
-        className="absolute inset-0 z-[-1] w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${backgroundSrc})` }}
-      />
+      <div className="absolute inset-0 z-[-1] w-full h-full overflow-hidden">
+        <img
+          src={backgroundSrc}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div
         className="absolute inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(255, 255, 255, 1)_0%,rgba(255, 255, 255, 1)_100%)]"
       />
