@@ -58,7 +58,6 @@ const Slider: React.FC = () => {
         style={{ backgroundImage: `url(${BGImage1})` }}
       />
 
-      {/* Red Daruma — Mobile */}
       {!isDesktop && (
         <img
           src={RedDaruma}
@@ -66,7 +65,6 @@ const Slider: React.FC = () => {
           className="absolute top-[50px] left-[40px] w-[200px] h-[30px] z-10 md:top-[45px] md:left-[40px] md:w-[180px]"
         />
       )}
-      {/* Red Daruma — Desktop */}
       {isDesktop && (
         <img
           src={RedDaruma}
@@ -140,7 +138,6 @@ const Slider: React.FC = () => {
         </div>
       )}
 
-      {/* Content: Title & Buttons */}
       {isDesktop ? (
         <div className="z-10 absolute bottom-[30px] left-[40px] flex flex-col items-start gap-[8px] 2xl:bottom-[50px] 2xl:left-[50px] 2xl:gap-[20px]">
           <SliderTitle />
@@ -153,12 +150,12 @@ const Slider: React.FC = () => {
         </div>
       )}
 
-      {/* Bottom logos */}
-      <img
-        src={BottomLogos}
-        alt="Bottom Logos"
-        className="absolute bottom-[5px] left-0 w-full h-auto animate-scroll-x md:bottom-[100px] 2xl:bottom-[10px]"
-      />
+      <div className="absolute bottom-[5px] md:bottom-[100px] 2xl:bottom-[10px] w-full overflow-hidden whitespace-nowrap">
+        <div className="animate-scroll-logos">
+          <img src={BottomLogos} alt="Bottom Logos" className="w-full h-auto" />
+          <img src={BottomLogos} alt="Bottom Logos" className="w-full h-auto" />
+        </div>
+      </div>
     </div>
   );
 };

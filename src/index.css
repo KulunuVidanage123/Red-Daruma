@@ -9,24 +9,24 @@ html, body {
   height: 100%;
 }
 
-/* Horizontal scroll animation for full-width bottom logos */
-@keyframes scroll-x {
+/* === CONTINUOUS INFINITE SCROLL FOR BOTTOM LOGOS === */
+@keyframes scroll-logos {
   0% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(-8%);
-  }
   100% {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }
 
-.animate-scroll-x {
-  animation: scroll-x 10s ease-in-out infinite;
+.animate-scroll-logos {
+  display: flex;
+  width: 200%;
+  animation: scroll-logos 20s linear infinite;
   will-change: transform;
 }
 
+/* Other animations remain unchanged */
 @keyframes slide-in-right {
   0% {
     transform: translateX(100%);
@@ -132,7 +132,7 @@ html, body {
   animation: continuousFade 4s ease-in-out infinite;
 }
 
-/* === Newly Added: Slow Tilt Animation === */
+/* === Slow Tilt Animation === */
 @keyframes slowTilt {
   0% { transform: rotate(0deg); }
   50% { transform: rotate(5deg); }
